@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">UltraProject</string>
+    <string name="Button_back">back</string>
+    <string name="Button_zero">0</string>
+    <string name="Button_one">1</string>
+    <string name="Button_two">2</string>
+    <string name="Button_three">3</string>
+    <string name="Button_four">4</string>
+    <string name="Button_five">5</string>
+    <string name="Button_six">6</string>
+    <string name="Button_seven">7</string>
+    <string name="Button_eight">8</string>
+    <string name="Button_nine">9</string>
+    <string name="Button_delete_one">D</string>
+    <string name="Button_delete_all">C</string>
+    <string name="Button_plus">+</string>
+    <string name="Button_minus">-</string>
+    <string name="Button_multiplication">*</string>
+    <string name="Button_division">/</string>
+    <string name="Button_percent">%</string>
+    <string name="Button_equal">=</string>
+    <string name="Button_coma">,</string>
+</resources>

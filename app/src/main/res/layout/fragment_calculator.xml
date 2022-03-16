@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/fragment_calculator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Calculator">
+
+    <Button
+        android:id="@+id/change_fragment"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/Button_back"
+        android:textSize="13sp" />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/number_zero"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="625dp"
+        android:text="@string/Button_zero"
+        />
+    <Button
+        android:id="@+id/number_one"
+        style="@style/calc_button"
+        android:layout_above="@+id/action_per_cent"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="575dp"
+        android:layout_marginBottom="-625dp"
+        android:text="@string/Button_one"
+        />
+    <Button
+        android:id="@+id/number_two"
+        style="@style/calc_button"
+        android:layout_above="@+id/number_zero"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="575dp"
+        android:layout_marginBottom="-625dp"
+        android:text="@string/Button_two"
+        />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/number_three"
+        android:layout_above="@+id/coma"
+        android:layout_marginBottom="-625dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="575dp"
+        android:text="@string/Button_three"
+        />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/number_four"
+        android:layout_above="@+id/number_one"
+        android:layout_marginBottom="-575dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="525dp"
+        android:text="@string/Button_four"
+        />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/number_five"
+        android:layout_above="@+id/number_two"
+        android:layout_marginBottom="-575dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="525dp"
+        android:text="@string/Button_five"
+        />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/number_six"
+        android:layout_above="@+id/number_two"
+        android:layout_marginBottom="-575dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="525dp"
+        android:text="@string/Button_six"
+        />
+
+    <Button
+        android:id="@+id/number_seven"
+        style="@style/calc_button"
+        android:layout_above="@+id/number_four"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="475dp"
+        android:layout_marginBottom="-525dp"
+        android:text="@string/Button_seven" />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/number_eight"
+        android:layout_above="@+id/number_two"
+        android:layout_marginBottom="-525dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="475dp"
+        android:text="@string/Button_eight"
+        />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/number_nine"
+        android:layout_above="@+id/number_two"
+        android:layout_marginBottom="-525dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="475dp"
+        android:text="@string/Button_nine"
+        />
+
+    <Button
+        android:id="@+id/delete_one"
+        style="@style/calc_button"
+        android:layout_above="@+id/number_two"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="425dp"
+        android:layout_marginBottom="-475dp"
+        android:text="@string/Button_delete_one" />
+
+    <Button
+        android:id="@+id/delete_all"
+        style="@style/calc_button"
+        android:layout_above="@+id/number_seven"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="425dp"
+        android:layout_marginBottom="-475dp"
+        android:text="@string/Button_delete_all" />
+
+    <Button
+        android:id="@+id/action_plus"
+        style="@style/calc_button"
+        android:layout_above="@+id/action_minus"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="525dp"
+        android:layout_marginBottom="-575dp"
+        android:text="@string/Button_plus" />
+    <Button
+        style="@style/calc_button"
+        android:id="@+id/action_minus"
+        android:layout_above="@+id/equal"
+        android:layout_marginBottom="-625dp"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="575dp"
+        android:text="@string/Button_minus"
+        />
+
+    <Button
+        android:id="@+id/action_multiplication"
+        style="@style/calc_button"
+        android:layout_above="@+id/action_plus"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="475dp"
+        android:layout_marginBottom="-525dp"
+        android:text="@string/Button_multiplication" />
+
+    <Button
+        android:id="@+id/action_division"
+        style="@style/calc_button"
+        android:layout_above="@+id/action_multiplication"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="425dp"
+        android:layout_marginBottom="-475dp"
+        android:text="@string/Button_division" />
+    <Button
+        android:id="@+id/action_per_cent"
+        style="@style/calc_button"
+        android:layout_alignParentBottom = "true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="625dp"
+        android:text="@string/Button_percent"
+        />
+
+    <Button
+        android:id="@+id/equal"
+        style="@style/calc_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="625dp"
+        android:text="@string/Button_equal" />
+    <Button
+        android:id="@+id/coma"
+        style="@style/calc_button"
+        android:layout_alignParentBottom = "true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="625dp"
+        android:text="@string/Button_coma"
+        />
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+    </ScrollView>
+</RelativeLayout>
