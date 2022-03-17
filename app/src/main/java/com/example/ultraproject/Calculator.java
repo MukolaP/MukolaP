@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class Calculator extends Fragment implements NavigationToFragmentModel{
+public class Calculator extends Fragment {
 
     private boolean equal = false;
 
@@ -35,7 +35,6 @@ public class Calculator extends Fragment implements NavigationToFragmentModel{
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_calculator, null);
 
         Button button_change_fragment = view.findViewById(R.id.change_fragment);
-        navigationToFragment(button_change_fragment);
 
         text = view.findViewById(R.id.result);
         mScrollView = view.findViewById(R.id.SCROLLER_ID);
@@ -163,17 +162,5 @@ public class Calculator extends Fragment implements NavigationToFragmentModel{
         text.setText(text.getText() + action);
         calculatorModel.paradigmEqualTo(action);
         calculatorModel.actionEqualTo(action);
-    }
-
-    @Override
-    public void navigationToFragment(Button button) {
-        button.setOnClickListener(
-                view -> {
-                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
-                    transaction.commit();
-                });
     }
 }

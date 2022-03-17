@@ -5,7 +5,7 @@ public class CalculatorModel {
     private String string = "", action = "";
     private int value, value1;
 
-    public String solution (){
+    public final String solution (){
         switch (action) {
             case ("\\+"):
                 resultToEqual(action, string);
@@ -36,7 +36,7 @@ public class CalculatorModel {
         return "";
     }
 
-    public void resultToEqual (String action, String string){
+    public final void resultToEqual (String action, String string) {
         String[] paradigm = string.split(action, 2);
 
         value = Integer.parseInt(paradigm[0]);
@@ -45,28 +45,28 @@ public class CalculatorModel {
         this.action = "";
     }
 
-    public String getString() {
+    public final String getString() {
         return string;
     }
 
-    public void getNulString() {
+    public final void getNulString() {
         string = "";
     }
 
-    public String getDeleteOneString(){
+    public final String getDeleteOneString(){
         return string = getString().substring(0, getString().length() - 1); }
 
-    public void paradigmEqualTo(String string){
+    public final void paradigmEqualTo(String string){
         this.string  += string;
     }
 
-    public String getAction() {
+    public final String getAction() {
         return action;
     }
 
-    public void actionEqualTo(String action){ this.action  = action;}
+    public final void actionEqualTo(String action){ this.action  = action;}
 
-    public boolean StringEqualAction() {
+    public final boolean StringEqualAction() {
         if (getString().length() != 0) {
             String action = getAction().replace("\\+", "+");
             action = action.replace("\\*", "*");
@@ -74,7 +74,7 @@ public class CalculatorModel {
         }
         return true;
     }
-    public boolean ZeroException(){
+    public final boolean ZeroException(){
         return !getString().endsWith("/");
     }
 }

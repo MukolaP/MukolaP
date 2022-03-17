@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">UltraProject</string>
     <string name="Button_back">back</string>
+    <string name="Button_fragment_calculator">Калькулятор</string>
+
     <string name="Button_zero">0</string>
     <string name="Button_one">1</string>
     <string name="Button_two">2</string>

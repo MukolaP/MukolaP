@@ -10,13 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class NavigationFragment extends Fragment implements NavigationToFragmentModel {
+public class NavigationFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    public NavigationFragment() {
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,19 +30,7 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_main, null);
 
         Button button_calculator_fragment = view.findViewById(R.id.fragment_calculator_change);
-        navigationToFragment(button_calculator_fragment);
-        return view;
-    }
 
-    @Override
-    public void navigationToFragment(Button button) {
-        button.setOnClickListener(
-                view1 -> {
-                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.MainActivity, Calculator.class, null);
-                    transaction.commit();
-        });
+        return view;
     }
 }
