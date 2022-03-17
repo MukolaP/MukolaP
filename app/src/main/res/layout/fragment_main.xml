@@ -18,4 +18,15 @@
         android:layout_marginBottom="32dp"
         android:text="Калькулятор" />
 
+    <Button
+        android:id="@+id/bt_color_helper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_calculator_change"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Color Helper" />
+
 </RelativeLayout>

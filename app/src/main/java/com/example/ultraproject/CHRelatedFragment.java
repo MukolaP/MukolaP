@@ -1,6 +1,5 @@
 package com.example.ultraproject;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class MainFragment extends Fragment implements View.OnClickListener{
-    private Button button_calculator_fragment;
-    private Button button_color_helper_fragment;
 
+public class CHRelatedFragment extends Fragment implements View.OnClickListener{
+    private Button back_to_main;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,12 +24,10 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, null);
+        View view = inflater.inflate(R.layout.fragment_c_h_related, null);
 
-        button_color_helper_fragment = view.findViewById(R.id.bt_color_helper);
-        button_calculator_fragment = (Button) view.findViewById(R.id.fragment_calculator_change);
-        button_calculator_fragment.setOnClickListener(this);
-        button_color_helper_fragment.setOnClickListener(this);
+        back_to_main = view.findViewById(R.id.back);
+        back_to_main.setOnClickListener(this);
         return view;
     }
 
@@ -40,16 +36,10 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (view.getId()){
-            case R.id.fragment_calculator_change:
+            case R.id.back:
                 transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, Calculator.class, null);
+                transaction.replace(R.id.MainActivity, MainFragment.class, null);
                 transaction.commit();
-                break;
-            case R.id.bt_color_helper:
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, CHRelatedFragment.class, null);
-                transaction.commit();
-                break;
         }
     }
 }
