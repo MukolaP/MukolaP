@@ -22,4 +22,6 @@
     <string name="Button_percent">%</string>
     <string name="Button_equal">=</string>
     <string name="Button_coma">,</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
