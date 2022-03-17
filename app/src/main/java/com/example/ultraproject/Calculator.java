@@ -37,7 +37,7 @@ public class Calculator extends Fragment {
                              Bundle savedInstanceState) {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_calculator, null);
 
-        Button button_change_fragment = (Button) view.findViewById(R.id.change_fragment);
+        Button button_change_fragment = view.findViewById(R.id.change_fragment);
         button_change_fragment.setOnClickListener(
                 view17 -> {
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
