@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-    private final MainFragment mainFragment = new MainFragment();
+    private final NavigationFragment navigationFragment = new NavigationFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.MainActivity, mainFragment);
+        ft.replace(R.id.MainActivity, navigationFragment);
         ft.commit();
     }
 }

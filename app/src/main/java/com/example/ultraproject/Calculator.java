@@ -15,16 +15,13 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class Calculator extends Fragment {
+public class Calculator extends Fragment implements NavigationToFragmentModel{
 
     private boolean equal = false;
 
     private final CalculatorModel calculatorModel = new CalculatorModel();
     private TextView text;
     private ScrollView mScrollView;
-
-    public Calculator() {
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,14 +35,7 @@ public class Calculator extends Fragment {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_calculator, null);
 
         Button button_change_fragment = view.findViewById(R.id.change_fragment);
-        button_change_fragment.setOnClickListener(
-                view17 -> {
-                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.MainActivity, MainFragment.class, null);
-                    transaction.commit();
-                });
+        navigationToFragment(button_change_fragment);
 
         text = view.findViewById(R.id.result);
         mScrollView = view.findViewById(R.id.SCROLLER_ID);
@@ -110,18 +100,24 @@ public class Calculator extends Fragment {
                     }
                 });
 
-        ButtonActionPressed(ButtonAction_minus, "-");
+        ButtonAction_minus.setOnClickListener(
+                view18 -> {
+                    if (calculatorModel.StringEqualAction()){
+                        ButtonActionModel("-");
+                    }
+                });
+
         ButtonActionPressed(ButtonAction_division, "/");
         ButtonActionPressed(ButtonAction_PerCent, "%");
 
         ButtonEqual.setOnClickListener(
                 view14 -> {
-                    if (calculatorModel.getString().equals("")) {
-                        text.setText("");
-                    } else if (calculatorModel.StringEqualAction()) {
-                        text.setText(text.getText() + calculatorModel.solution() + "\n");
-                        equal = true;
-                        mScrollView.fullScroll(View.FOCUS_DOWN);
+                    if (!calculatorModel.getString().equals("") & !calculatorModel.getAction().equals("")) {
+                        if (calculatorModel.StringEqualAction()) {
+                            text.setText(text.getText() + calculatorModel.solution() + "\n");
+                            equal = true;
+                            mScrollView.fullScroll(View.FOCUS_DOWN);
+                        }
                     }
                 });
 
@@ -157,10 +153,27 @@ public class Calculator extends Fragment {
         button.setOnClickListener(
                 view -> {
                     if (calculatorModel.getString().length() != 0 & calculatorModel.StringEqualAction()) {
-                        text.setText(text.getText() + action);
-                        calculatorModel.paradigmEqualTo(action);
-                        calculatorModel.actionEqualTo(action);
+                        ButtonActionModel(action);
                     }
+                });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void ButtonActionModel(String action){
+        text.setText(text.getText() + action);
+        calculatorModel.paradigmEqualTo(action);
+        calculatorModel.actionEqualTo(action);
+    }
+
+    @Override
+    public void navigationToFragment(Button button) {
+        button.setOnClickListener(
+                view -> {
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.setReorderingAllowed(true);
+                    transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
+                    transaction.commit();
                 });
     }
 }

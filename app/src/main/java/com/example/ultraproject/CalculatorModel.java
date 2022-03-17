@@ -11,8 +11,18 @@ public class CalculatorModel {
                 resultToEqual(action, string);
                 return " = " + (value + value1);
             case ("-"):
-                resultToEqual(action, string);
-                return " = " + (value - value1);
+                if (!string.substring(0,1).equals(action)){
+                    resultToEqual(action, string);
+                    return " = " + (value - value1);
+                } else {
+                    string = string.substring(1);
+                    String[] paradigm = string.split("-", 2);
+
+                    string = "";
+                    action = "";
+
+                    return " = " + (- Integer.parseInt(paradigm[0]) - Integer.parseInt(paradigm[1]));
+            }
             case ("\\*"):
                 resultToEqual(action, string);
                 return " = " + value * value1;
