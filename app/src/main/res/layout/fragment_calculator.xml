@@ -8,7 +8,7 @@
     tools:context=".Calculator">
 
     <Button
-        android:id="@+id/change_fragment"
+        android:id="@+id/back_calculator"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
@@ -191,13 +191,16 @@
         android:layout_height="200dp"
         android:layout_marginTop="100dp"
         android:fillViewport="true"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        tools:ignore="ExtraText">
 
         <TextView
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            />
     </ScrollView>
 </RelativeLayout>

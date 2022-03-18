@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class Calculator extends Fragment {
+public class Calculator extends Fragment implements NavigationToFragment {
 
     private boolean equal = false;
 
@@ -34,7 +34,8 @@ public class Calculator extends Fragment {
                              Bundle savedInstanceState) {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_calculator, null);
 
-        Button button_change_fragment = view.findViewById(R.id.change_fragment);
+        Button button_change_fragment = view.findViewById(R.id.back_calculator);
+        navigation(button_change_fragment);
 
         text = view.findViewById(R.id.result);
         mScrollView = view.findViewById(R.id.SCROLLER_ID);
@@ -162,5 +163,19 @@ public class Calculator extends Fragment {
         text.setText(text.getText() + action);
         calculatorModel.paradigmEqualTo(action);
         calculatorModel.actionEqualTo(action);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void navigation(Button button) {
+        button.setOnClickListener(view -> {
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            if (view.getId() == R.id.back_calculator) {
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
+                transaction.commit();
+            }
+        });
     }
 }
