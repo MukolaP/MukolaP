@@ -1,6 +1,6 @@
 package com.example.ultraproject.Calculator;
 
-public class CalculatorModel {
+public final class CalculatorModel {
 
     private String string = "", action = "";
     private int value, value1;
@@ -49,22 +49,20 @@ public class CalculatorModel {
         return string;
     }
 
-    public final void getNulString() {
-        string = "";
-    }
-
-    public final String getDeleteOneString(){
-        return string = getString().substring(0, getString().length() - 1); }
-
-    public final void paradigmEqualTo(String string){
-        this.string  += string;
+    public void setString(String string) {
+        this.string = string;
     }
 
     public final String getAction() {
         return action;
     }
 
-    public final void actionEqualTo(String action){ this.action  = action;}
+    public final void setAction(String action) {
+        this.action = action;
+    }
+
+    public final String getDeleteOneString(){
+        return string = getString().substring(0, getString().length() - 1); }
 
     public final boolean StringEqualAction() {
         if (getString().length() != 0) {
@@ -74,6 +72,7 @@ public class CalculatorModel {
         }
         return true;
     }
+
     public final boolean ZeroException(){
         return !getString().endsWith("/");
     }

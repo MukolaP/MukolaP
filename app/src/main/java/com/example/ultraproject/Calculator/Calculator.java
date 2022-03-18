@@ -19,18 +19,13 @@ import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.NavigationToFragment;
 import com.example.ultraproject.R;
 
-public class Calculator extends Fragment implements NavigationToFragment {
+public final class Calculator extends Fragment implements NavigationToFragment {
 
     private boolean equal = false;
 
     private final CalculatorModel calculatorModel = new CalculatorModel();
     private TextView text;
     private ScrollView mScrollView;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -70,9 +65,9 @@ public class Calculator extends Fragment implements NavigationToFragment {
 
         ButtonNumber_zero.setOnClickListener(
                 view1 -> {
-                    if (text.getText() != "" & calculatorModel.ZeroException()) {
+                    if (!text.getText().toString().equals("") & calculatorModel.ZeroException()) {
                         text.setText(text.getText() + "0");
-                        calculatorModel.paradigmEqualTo("0");
+                        calculatorModel.setString(calculatorModel.getString() + "0");
                     }
                 });
 
@@ -90,8 +85,8 @@ public class Calculator extends Fragment implements NavigationToFragment {
                 view12 -> {
                     if (calculatorModel.getString().length() != 0 & calculatorModel.StringEqualAction()) {
                         text.setText(text.getText() + "+");
-                        calculatorModel.paradigmEqualTo("+");
-                        calculatorModel.actionEqualTo("\\+");
+                        calculatorModel.setString(calculatorModel.getString() + "+");
+                        calculatorModel.setAction("\\+");
                     }
                 });
 
@@ -99,8 +94,8 @@ public class Calculator extends Fragment implements NavigationToFragment {
                 view13 -> {
                     if (calculatorModel.getString().length() != 0 & calculatorModel.StringEqualAction()) {
                         text.setText(text.getText() + "*");
-                        calculatorModel.paradigmEqualTo("*");
-                        calculatorModel.actionEqualTo("\\*");
+                        calculatorModel.setString(calculatorModel.getString() + "*");
+                        calculatorModel.setAction("\\*");
                     }
                 });
 
@@ -138,8 +133,9 @@ public class Calculator extends Fragment implements NavigationToFragment {
         ButtonDeleteAll.setOnClickListener(
                 view16 -> {
                     text.setText("");
-                    calculatorModel.getNulString();
+                    calculatorModel.setString("");
                 });
+
         return view;
     }
 
@@ -148,7 +144,7 @@ public class Calculator extends Fragment implements NavigationToFragment {
         button.setOnClickListener(
                 view -> {
                     text.setText(text.getText() + number);
-                    calculatorModel.paradigmEqualTo(number);
+                    calculatorModel.setString(calculatorModel.getString() + number);
                 });
     }
 
@@ -165,8 +161,8 @@ public class Calculator extends Fragment implements NavigationToFragment {
     @SuppressLint("SetTextI18n")
     public void ButtonActionModel(String action){
         text.setText(text.getText() + action);
-        calculatorModel.paradigmEqualTo(action);
-        calculatorModel.actionEqualTo(action);
+        calculatorModel.setString(calculatorModel.getString() + action);
+        calculatorModel.setAction(action);
     }
 
     @SuppressLint("NonConstantResourceId")
