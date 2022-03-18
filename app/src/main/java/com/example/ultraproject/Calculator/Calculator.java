@@ -24,8 +24,8 @@ public final class Calculator extends Fragment implements NavigationToFragment {
     private boolean equal = false;
 
     private final CalculatorModel calculatorModel = new CalculatorModel();
-    private TextView text;
     private ScrollView mScrollView;
+    private TextView text;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -81,28 +81,15 @@ public final class Calculator extends Fragment implements NavigationToFragment {
         ButtonNumPressed(ButtonNumber_eight, "8");
         ButtonNumPressed(ButtonNumber_nine, "9");
 
-        ButtonAction_plus.setOnClickListener(
-                view12 -> {
-                    if (calculatorModel.getString().length() != 0 & calculatorModel.StringEqualAction()) {
-                        text.setText(text.getText() + "+");
-                        calculatorModel.setString(calculatorModel.getString() + "+");
-                        calculatorModel.setAction("\\+");
-                    }
-                });
-
-        ButtonAction_multiplication.setOnClickListener(
-                view13 -> {
-                    if (calculatorModel.getString().length() != 0 & calculatorModel.StringEqualAction()) {
-                        text.setText(text.getText() + "*");
-                        calculatorModel.setString(calculatorModel.getString() + "*");
-                        calculatorModel.setAction("\\*");
-                    }
-                });
+        ButtonActionPressed(ButtonAction_plus, "+");
+        ButtonActionPressed(ButtonAction_multiplication, "*");
 
         ButtonAction_minus.setOnClickListener(
                 view18 -> {
                     if (calculatorModel.StringEqualAction()){
-                        ButtonActionModel("-");
+                        text.setText(text.getText() + "-");
+                        calculatorModel.setString(calculatorModel.getString() + "-");
+                        calculatorModel.setAction("-");
                     }
                 });
 
@@ -153,16 +140,13 @@ public final class Calculator extends Fragment implements NavigationToFragment {
         button.setOnClickListener(
                 view -> {
                     if (calculatorModel.getString().length() != 0 & calculatorModel.StringEqualAction()) {
-                        ButtonActionModel(action);
+                        text.setText(text.getText() + action);
+                        calculatorModel.setString(calculatorModel.getString() + action);
+                        String new_action = action.replace("+", "\\+");
+                        new_action = new_action.replace("*", "\\*");
+                        calculatorModel.setAction(new_action);
                     }
                 });
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void ButtonActionModel(String action){
-        text.setText(text.getText() + action);
-        calculatorModel.setString(calculatorModel.getString() + action);
-        calculatorModel.setAction(action);
     }
 
     @SuppressLint("NonConstantResourceId")
