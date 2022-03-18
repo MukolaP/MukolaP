@@ -59,11 +59,11 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
         editText.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public final void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public final void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.toString().equals("")) {
                     initList();
                 } else {
@@ -72,7 +72,7 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public final void afterTextChanged(Editable s) {
             }
 
         });
