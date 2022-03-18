@@ -12,11 +12,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ultraproject.NavigationFragment;
-import com.example.ultraproject.NavigationToFragment;
 import com.example.ultraproject.R;
 
 
-public class CHRelatedFragment extends Fragment implements NavigationToFragment {
+public class CHRelatedFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class CHRelatedFragment extends Fragment implements NavigationToFragment 
     }
 
     @SuppressLint("NonConstantResourceId")
-    @Override
     public void navigation(Button button) {
         button.setOnClickListener(view -> {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();

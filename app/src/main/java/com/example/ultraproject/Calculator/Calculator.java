@@ -16,10 +16,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ultraproject.NavigationFragment;
-import com.example.ultraproject.NavigationToFragment;
 import com.example.ultraproject.R;
 
-public final class Calculator extends Fragment implements NavigationToFragment {
+public final class Calculator extends Fragment {
 
     private boolean equal = false;
 
@@ -150,7 +149,6 @@ public final class Calculator extends Fragment implements NavigationToFragment {
     }
 
     @SuppressLint("NonConstantResourceId")
-    @Override
     public void navigation(Button button) {
         button.setOnClickListener(view -> {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();

@@ -22,7 +22,7 @@ import java.util.Arrays;
 import com.example.ultraproject.Calculator.Calculator;
 import com.example.ultraproject.ColorHelper.CHRelatedFragment;
 
-public class NavigationFragment extends Fragment implements NavigationToFragment {
+public class NavigationFragment extends Fragment {
 
     private String[] items;
     private ArrayList<String> listItems;
@@ -37,14 +37,14 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
         Button button_colorHelper = view.findViewById(R.id.bt_color_helper);
         Button button_calculator = view.findViewById(R.id.bt_calculator);
 
-        navigation(button_colorHelper);
-        navigation(button_calculator);
+        button_calculator.setOnClickListener(view12 -> navigation(0));
+        button_colorHelper.setOnClickListener(view12 -> navigation(1));
 
         listView = view.findViewById(R.id.listview);
         EditText editText = view.findViewById(R.id.text_search);
         initList();
 
-        listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
+        listView.setOnItemClickListener((parent, view1, position, id) -> navigation(position));
         listView.setVisibility(View.INVISIBLE);
 
         editText.addTextChangedListener(new TextWatcher() {
@@ -90,27 +90,7 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
 
     }
 
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public final void navigation(Button button) {
-        button.setOnClickListener(view -> {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            switch (view.getId()) {
-                case R.id.bt_calculator:
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.MainActivity, Calculator.class, null);
-                    transaction.commit();
-                    break;
-                case R.id.bt_color_helper:
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.MainActivity, CHRelatedFragment.class, null);
-                    transaction.commit();
-                    break;
-            }
-        });
-    }
-    public final void transaction (int pos){
+    public void navigation(int pos) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (pos){
@@ -127,4 +107,6 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
         }
     }
 }
+
+
 
