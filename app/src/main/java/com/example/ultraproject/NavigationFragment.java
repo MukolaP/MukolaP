@@ -24,22 +24,10 @@ import com.example.ultraproject.ColorHelper.CHRelatedFragment;
 
 public class NavigationFragment extends Fragment implements NavigationToFragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     private String[] items;
     private ArrayList<String> listItems;
     private ArrayAdapter<String> adapter;
     private ListView listView;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            getArguments().getString(ARG_PARAM1);
-            getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +43,7 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
         listView = view.findViewById(R.id.listview);
         EditText editText = view.findViewById(R.id.text_search);
         initList();
+        listView.setVisibility(View.INVISIBLE);
 
         editText.addTextChangedListener(new TextWatcher() {
 
@@ -64,8 +53,10 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
 
             @Override
             public final void onTextChanged(CharSequence s, int start, int before, int count) {
+                listView.setVisibility(View.VISIBLE);
                 if (s.toString().equals("")) {
                     initList();
+                    listView.setVisibility(View.INVISIBLE);
                 } else {
                     searchItem(s.toString());
                 }
@@ -74,7 +65,6 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
             @Override
             public final void afterTextChanged(Editable s) {
             }
-
         });
 
         return view;
@@ -87,12 +77,10 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
                 listItems.remove(item);
             }
         }
-
         adapter.notifyDataSetChanged();
     }
 
-
-        public final void initList() {
+    public final void initList() {
         items = new String[]{"Calculator", "Color helper"};
         listItems = new ArrayList<>(Arrays.asList(items));
         adapter = new ArrayAdapter<>(getContext(), R.layout.list_item, R.id.text_item, listItems);
