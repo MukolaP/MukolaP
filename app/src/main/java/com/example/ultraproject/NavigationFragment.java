@@ -7,10 +7,13 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -43,6 +46,12 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
         listView = view.findViewById(R.id.listview);
         EditText editText = view.findViewById(R.id.text_search);
         initList();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                perehid(position);
+            }
+        });
         listView.setVisibility(View.INVISIBLE);
 
         editText.addTextChangedListener(new TextWatcher() {
@@ -85,6 +94,9 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
         listItems = new ArrayList<>(Arrays.asList(items));
         adapter = new ArrayAdapter<>(getContext(), R.layout.list_item, R.id.text_item, listItems);
         listView.setAdapter(adapter);
+        // зробити клікабельний айтем і переадавати в ньому його назву,
+        // потім звіряти її з якимось стрінгом і додати перехід на правильне вікно
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -106,6 +118,22 @@ public class NavigationFragment extends Fragment implements NavigationToFragment
                     break;
             }
         });
+    }
+    public final void perehid(int pos){
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        switch (pos){
+            case 0:
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.MainActivity, Calculator.class, null);
+                transaction.commit();
+                break;
+            case 1:
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.MainActivity, CHRelatedFragment.class, null);
+                transaction.commit();
+                break;
+        }
     }
 }
 
