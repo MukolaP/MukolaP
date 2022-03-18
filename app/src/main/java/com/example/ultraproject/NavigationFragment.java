@@ -93,6 +93,7 @@ public class NavigationFragment extends Fragment {
     public void navigation(int pos) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
         switch (pos){
             case 0:
                 transaction.setReorderingAllowed(true);
@@ -107,6 +108,3 @@ public class NavigationFragment extends Fragment {
         }
     }
 }
-
-
-
