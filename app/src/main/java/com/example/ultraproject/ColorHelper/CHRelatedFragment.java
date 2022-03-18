@@ -39,6 +39,7 @@ public class CHRelatedFragment extends Fragment {
         button.setOnClickListener(view -> {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             if (view.getId() == R.id.back_colorHelper) {
                 transaction.setReorderingAllowed(true);
                 transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
