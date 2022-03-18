@@ -1,4 +1,4 @@
-package com.example.ultraproject;
+package com.example.ultraproject.Calculator;
 
 public class CalculatorModel {
 

@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.ultraproject.Calculator.Calculator;
+import com.example.ultraproject.ColorHelper.CHRelatedFragment;
+
 public class NavigationFragment extends Fragment implements NavigationToFragment {
 
     private static final String ARG_PARAM1 = "param1";

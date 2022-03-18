@@ -1,4 +1,4 @@
-package com.example.ultraproject;
+package com.example.ultraproject.ColorHelper;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -11,8 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.ultraproject.NavigationFragment;
+import com.example.ultraproject.NavigationToFragment;
+import com.example.ultraproject.R;
 
-public class CHRelatedFragment extends Fragment implements NavigationToFragment{
+
+public class CHRelatedFragment extends Fragment implements NavigationToFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,7 @@ public class CHRelatedFragment extends Fragment implements NavigationToFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_c_h_related, null);
+        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_color_helper, null);
 
         Button back_to_main = view.findViewById(R.id.back_colorHelper);
         navigation(back_to_main);

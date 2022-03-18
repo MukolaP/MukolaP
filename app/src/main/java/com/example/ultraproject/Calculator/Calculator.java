@@ -1,4 +1,4 @@
-package com.example.ultraproject;
+package com.example.ultraproject.Calculator;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.example.ultraproject.NavigationFragment;
+import com.example.ultraproject.NavigationToFragment;
+import com.example.ultraproject.R;
 
 public class Calculator extends Fragment implements NavigationToFragment {
 
