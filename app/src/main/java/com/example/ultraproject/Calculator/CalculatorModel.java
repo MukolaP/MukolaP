@@ -45,13 +45,9 @@ public final class CalculatorModel {
         this.action = "";
     }
 
-    public final String getString() {
-        return string;
-    }
+    public final String getString() { return string; }
 
-    public void setString(String string) {
-        this.string = string;
-    }
+    public final void setString(String string) { this.string = string; }
 
     public final String getAction() {
         return action;
