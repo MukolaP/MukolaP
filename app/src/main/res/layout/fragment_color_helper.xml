@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:id="@+id/fragment_color_helper"
@@ -11,4 +11,106 @@
     <Button
         android:id="@+id/back_colorHelper"
         style="@style/backMain_button"/>
-</FrameLayout>
+
+    <TextView
+        android:text="main color"
+        style="@style/text_view_in_color_helper"
+        android:layout_below="@+id/back_colorHelper"
+        android:id="@+id/tv_for_main_color"
+        />
+
+    <FrameLayout
+        android:id="@+id/main_color"
+        style="@style/frame_layouts_for_colors"
+        android:layout_below="@+id/tv_for_main_color"
+        />
+
+    <TextView
+        android:text="complementary color"
+        style="@style/text_view_in_color_helper"
+        android:layout_below="@+id/main_color"
+        android:id="@+id/tv_for_complementary_color"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_for_colors"
+        android:layout_below="@+id/tv_for_complementary_color"
+        android:id="@+id/complementaryColor"
+        />
+
+    <TextView
+        android:text="analogous colors"
+        style="@style/text_view_in_color_helper"
+        android:layout_below="@+id/complementaryColor"
+        android:id="@+id/tv_for_analogous_color"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_left"
+        android:layout_below="@+id/tv_for_analogous_color"
+        android:id="@+id/left_analogous_color"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_right"
+        android:layout_below="@+id/tv_for_analogous_color"
+        android:id="@+id/right_analogous_color"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_center"
+        android:layout_below="@+id/tv_for_analogous_color"
+        android:id="@+id/center_analogous_color"
+        />
+
+    <TextView
+        android:text="split complementary colors"
+        style="@style/text_view_in_color_helper"
+        android:layout_below="@+id/center_analogous_color"
+        android:id="@+id/tv_for_split_complementary"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_left"
+        android:layout_below="@+id/tv_for_split_complementary"
+        android:id="@+id/left_split_complementary"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_right"
+        android:layout_below="@+id/tv_for_split_complementary"
+        android:id="@+id/right_split_complementary"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_center"
+        android:layout_below="@+id/tv_for_split_complementary"
+        android:id="@+id/center_split_complementary"
+        />
+
+    <TextView
+        android:text="triadic colors"
+        style="@style/text_view_in_color_helper"
+        android:layout_below="@+id/center_split_complementary"
+        android:id="@+id/tv_for_triadic_color"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_left"
+        android:layout_below="@+id/tv_for_triadic_color"
+        android:id="@+id/left_triadic"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_right"
+        android:layout_below="@+id/tv_for_triadic_color"
+        android:id="@+id/right_triadic"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_center"
+        android:layout_below="@+id/tv_for_triadic_color"
+        android:id="@+id/center_triadic"
+        />
+
+</RelativeLayout>
