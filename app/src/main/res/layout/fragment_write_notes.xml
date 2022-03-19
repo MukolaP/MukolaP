@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Notes.WriteNotesFragment"
+    android:id="@+id/fragment_write_notes">
+
+    <Button
+        style="@style/backMain_button"
+        android:text="@string/Button_notes"
+        android:id="@+id/back_ToNotes"
+        />
+    <Button
+        android:text="@string/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/body_notes"
+        android:layout_alignEnd ="@id/body_notes"
+        />
+    <EditText
+        android:hint="@string/Theme_notes"
+        android:id="@+id/theme_notes"
+        android:layout_marginTop = "75sp"
+        style="@style/addNotes_EditText"
+        android:autofillHints =""
+        />
+    <EditText
+        android:hint="@string/Body_notes"
+        android:id="@+id/body_notes"
+        android:layout_marginTop = "150sp"
+        style="@style/addNotes_EditText"
+        android:autofillHints=""
+        />
+</RelativeLayout>

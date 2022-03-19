@@ -37,7 +37,10 @@ public class NotesFragment extends Fragment {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_notes, null);
 
         Button back_to_main = view.findViewById(R.id.back_notes);
-        navigation(back_to_main);
+        navigation(back_to_main, 0);
+
+        Button bt_newNotes = view.findViewById(R.id.bt_newNotes);
+        navigation(bt_newNotes, 1);
 
         listView = (ListView) view.findViewById(R.id.listview_notes);
         editText = (EditText) view.findViewById(R.id.text_notes);
@@ -89,18 +92,26 @@ public class NotesFragment extends Fragment {
     }
 
     @SuppressLint("NonConstantResourceId")
-    public final void navigation(Button button) {
+    public final void navigation(Button button, int pos) {
         button.setOnClickListener(view -> {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            if (view.getId() == R.id.back_notes) {
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
-                transaction.commit();
+            switch (pos){
+                case (0):
+                    transaction.setReorderingAllowed(true);
+                    transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
+                    transaction.commit();
+                    break;
+                case (1):
+                    transaction.setReorderingAllowed(true);
+                    transaction.replace(R.id.MainActivity, WriteNotesFragment.class, null);
+                    transaction.commit();
+                    break;
             }
         });
     }
+
     public void transaction(int pos) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
