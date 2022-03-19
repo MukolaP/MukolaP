@@ -18,7 +18,7 @@
         />
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/listview_main"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         >
@@ -33,5 +33,10 @@
         android:id="@+id/bt_color_helper"
         style="@style/navigation_button"
         android:text="@string/Button_colorHelper" />
+
+    <Button
+        android:id="@+id/bt_notes"
+        style="@style/navigation_button"
+        android:text="@string/Button_notes" />
 
 </LinearLayout>

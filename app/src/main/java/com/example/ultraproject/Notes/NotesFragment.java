@@ -1,7 +1,12 @@
-package com.example.ultraproject;
+package com.example.ultraproject.Notes;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,42 +17,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import com.example.ultraproject.NavigationFragment;
+import com.example.ultraproject.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.example.ultraproject.Calculator.Calculator;
-import com.example.ultraproject.ColorHelper.CHRelatedFragment;
-import com.example.ultraproject.Notes.NotesFragment;
+public class NotesFragment extends Fragment {
 
-public class NavigationFragment extends Fragment {
-
-    private String[] items;
-    private ArrayList<String> listItems;
-    private ArrayAdapter<String> adapter;
-    private ListView listView;
+    String[] items;
+    ArrayList<String> listItems;
+    ArrayAdapter<String> adapter;
+    ListView listView;
+    EditText editText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_main, null);
+        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_notes, null);
 
-        Button button_colorHelper = view.findViewById(R.id.bt_color_helper);
-        Button button_calculator = view.findViewById(R.id.bt_calculator);
-        Button button_notes = view.findViewById(R.id.bt_notes);
+        Button back_to_main = view.findViewById(R.id.back_notes);
+        navigation(back_to_main);
 
-        button_calculator.setOnClickListener(view12 -> navigation(0));
-        button_colorHelper.setOnClickListener(view12 -> navigation(1));
-        button_notes.setOnClickListener(view12 -> navigation(2));
-
-        listView = view.findViewById(R.id.listview_main);
-        EditText editText = view.findViewById(R.id.text_search);
+        listView = (ListView) view.findViewById(R.id.listview_notes);
+        editText = (EditText) view.findViewById(R.id.text_notes);
         initList();
 
-        listView.setOnItemClickListener((parent, view1, position, id) -> navigation(position));
+        listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
         listView.setVisibility(View.INVISIBLE);
 
         editText.addTextChangedListener(new TextWatcher() {
@@ -68,7 +64,7 @@ public class NavigationFragment extends Fragment {
             }
 
             @Override
-            public final void afterTextChanged(Editable s) {
+            public void afterTextChanged(Editable editable) {
             }
         });
 
@@ -92,25 +88,27 @@ public class NavigationFragment extends Fragment {
         listView.setAdapter(adapter);
     }
 
-    public void navigation(int pos) {
+    @SuppressLint("NonConstantResourceId")
+    public final void navigation(Button button) {
+        button.setOnClickListener(view -> {
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+            if (view.getId() == R.id.back_notes) {
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
+                transaction.commit();
+            }
+        });
+    }
+    public void transaction(int pos) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
         switch (pos){
             case 0:
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, Calculator.class, null);
-                transaction.commit();
-                break;
             case 1:
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, CHRelatedFragment.class, null);
-                transaction.commit();
-                break;
             case 2:
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, NotesFragment.class, null);
-                transaction.commit();
                 break;
         }
     }

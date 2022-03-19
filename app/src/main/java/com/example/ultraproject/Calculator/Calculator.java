@@ -32,8 +32,8 @@ public final class Calculator extends Fragment {
                              Bundle savedInstanceState) {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_calculator, null);
 
-        Button button_change_fragment = view.findViewById(R.id.back_calculator);
-        navigation(button_change_fragment);
+        Button back_to_main = view.findViewById(R.id.back_calculator);
+        navigation(back_to_main);
 
         text = view.findViewById(R.id.result);
         mScrollView = view.findViewById(R.id.SCROLLER_ID);

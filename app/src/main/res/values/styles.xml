@@ -18,4 +18,15 @@
         <item name="android:layout_marginBottom">32dp</item>
     </style>
 
+    <style name="backMain_button">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:text">@string/Button_back</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
 </resources>

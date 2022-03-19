@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/fragment_notes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Notes.NotesFragment"
+    >
+
+    <EditText
+        android:id="@+id/text_notes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50sp"
+        android:layout_marginTop="50sp"
+        android:layout_marginEnd="50sp"
+        android:hint="@string/EditText_write"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:text="" />
+    <Button
+        android:id="@+id/back_notes"
+        style="@style/backMain_button"
+        />
+    <Button
+        android:id="@+id/bt_newNotes"
+        android:layout_width="58sp"
+        android:layout_height="58sp"
+        android:layout_marginStart="160sp"
+        android:layout_marginBottom="10sp"
+        android:layout_alignParentBottom = "true"
+        android:text="@string/Button_plus"
+        android:textSize="18sp"
+        />
+    <ListView
+        android:id="@+id/listview_notes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="400dp">
+    </ListView>
+
+
+</RelativeLayout>

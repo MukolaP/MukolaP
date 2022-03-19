@@ -4,6 +4,7 @@
 
     <string name="Button_calculator">Calculator</string>
     <string name="Button_colorHelper">Color helper</string>
+    <string name="Button_notes">Notes</string>
 
     <string name="Button_zero">0</string>
     <string name="Button_one">1</string>
@@ -26,5 +27,6 @@
     <string name="Button_coma">,</string>
 
     <string name="EditText_search">Search</string>
+    <string name="EditText_write">Write this</string>
 
 </resources>
