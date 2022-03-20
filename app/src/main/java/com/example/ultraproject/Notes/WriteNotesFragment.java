@@ -1,33 +1,25 @@
 package com.example.ultraproject.Notes;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
+import com.google.android.material.animation.ImageMatrixProperty;
 
 import com.example.ultraproject.MainActivity;
 import com.example.ultraproject.R;
-import com.google.android.material.animation.ImageMatrixProperty;
-
-import java.util.ArrayList;
 
 public class WriteNotesFragment extends Fragment {
 
     private EditText theme_notes;
     private EditText body_notes;
-
-    NotesController notesController = new NotesController();
-    NotesFragment notesFragment = new NotesFragment();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,8 +35,10 @@ public class WriteNotesFragment extends Fragment {
         Button button_add = view.findViewById(R.id.bt_notes_add);
         button_add.setOnClickListener(view1 -> {
             MainActivity mainActivity = (MainActivity) requireActivity();
-            mainActivity.arrayList.add("1");
-        });
+
+            mainActivity.arrayList.add(theme_notes.getText().toString());
+            mainActivity.arrayList.add(body_notes.getText().toString());
+         });
 
         return view;
     }

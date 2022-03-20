@@ -2,11 +2,6 @@ package com.example.ultraproject.Notes;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,6 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ultraproject.MainActivity;
 import com.example.ultraproject.NavigationFragment;
@@ -33,8 +32,6 @@ public class NotesFragment extends Fragment {
     @SuppressLint("StaticFieldLeak")
     static ListView notes;
     EditText editText;
-
-    NotesController notesController = new NotesController();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,9 +56,13 @@ public class NotesFragment extends Fragment {
 
         Button button_refresh = view.findViewById(R.id.bt_refreshNotes);
         button_refresh.setOnClickListener(view1 -> {
-            mam();
-        });
+            MainActivity mainActivity = (MainActivity) requireActivity();
 
+            ArrayAdapter<String> adapter_search = new ArrayAdapter<> (getContext(),
+                    R.layout.list_item_main, R.id.text_item_main, mainActivity.arrayList);
+            notes.setAdapter(adapter_search);
+        });
+        
         editText.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -110,7 +111,7 @@ public class NotesFragment extends Fragment {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            switch (pos){
+            switch (pos) {
                 case (0):
                     transaction.setReorderingAllowed(true);
                     transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
@@ -129,20 +130,11 @@ public class NotesFragment extends Fragment {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        switch (pos){
+        switch (pos) {
             case 0:
             case 1:
             case 2:
                 break;
         }
-    }
-
-    public void mam() {
-//        notesController.addThemes("1");
-        
-        MainActivity mainActivity = (MainActivity) requireActivity();
-        ArrayAdapter<String> adapter_search = new ArrayAdapter<>(getContext(),
-                R.layout.list_item_main, R.id.text_item_main, mainActivity.arrayList);
-        notes.setAdapter(adapter_search);
     }
 }
