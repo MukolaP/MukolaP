@@ -31,7 +31,7 @@
     <string name="Theme_notes">Тема</string>
     <string name="Body_notes">Основна частина</string>
     <string name="add">Add</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+  
+    <string name="refresh">refresh</string>
 
 </resources>

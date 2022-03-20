@@ -1,6 +1,7 @@
 package com.example.ultraproject.Notes;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,10 +11,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.ultraproject.R;
+import com.google.android.material.animation.ImageMatrixProperty;
+
+import java.util.ArrayList;
 
 public class WriteNotesFragment extends Fragment {
 
@@ -31,15 +36,12 @@ public class WriteNotesFragment extends Fragment {
         Button back_notes = view.findViewById(R.id.back_ToNotes);
         navigation(back_notes);
 
-        Button button_add = view.findViewById(R.id.bt_notes_add);
-
         theme_notes = view.findViewById(R.id.theme_notes);
         body_notes = view.findViewById(R.id.body_notes);
 
+        Button button_add = view.findViewById(R.id.bt_notes_add);
         button_add.setOnClickListener(view1 -> {
-            String[] themes = new String[]{"0","1"};
-            themes[0]= String.valueOf(theme_notes.getText());
-            notesController.setThemes(themes);
+            notesController.addThemes("1");
         });
 
         return view;
