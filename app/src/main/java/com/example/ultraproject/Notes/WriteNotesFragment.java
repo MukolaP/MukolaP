@@ -11,6 +11,7 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.google.android.material.animation.ImageMatrixProperty;
 
 import com.example.ultraproject.MainActivity;
 import com.example.ultraproject.R;
@@ -37,7 +38,7 @@ public class WriteNotesFragment extends Fragment {
 
             mainActivity.arrayList.add(theme_notes.getText().toString());
             mainActivity.arrayList.add(body_notes.getText().toString());
-        });
+         });
 
         return view;
     }
@@ -54,4 +55,5 @@ public class WriteNotesFragment extends Fragment {
             }
         });
     }
+
 }
