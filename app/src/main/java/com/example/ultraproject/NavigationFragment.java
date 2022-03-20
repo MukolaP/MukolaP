@@ -44,13 +44,13 @@ public class NavigationFragment extends Fragment {
         button_notes.setOnClickListener(view12 -> navigation(2));
 
         listView = view.findViewById(R.id.listview_main);
-        EditText editText = view.findViewById(R.id.text_search);
+        EditText editText_search = view.findViewById(R.id.text_search);
         initList();
 
         listView.setOnItemClickListener((parent, view1, position, id) -> navigation(position));
         listView.setVisibility(View.INVISIBLE);
 
-        editText.addTextChangedListener(new TextWatcher() {
+        editText_search.addTextChangedListener(new TextWatcher() {
 
             @Override
             public final void beforeTextChanged(CharSequence s, int start, int count, int after) {

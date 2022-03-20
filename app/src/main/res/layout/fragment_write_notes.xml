@@ -12,6 +12,7 @@
         android:id="@+id/back_ToNotes"
         />
     <Button
+        android:id="@+id/bt_notes_add"
         android:text="@string/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,15 +20,15 @@
         android:layout_alignEnd ="@id/body_notes"
         />
     <EditText
-        android:hint="@string/Theme_notes"
         android:id="@+id/theme_notes"
+        android:hint="@string/Theme_notes"
         android:layout_marginTop = "75sp"
         style="@style/addNotes_EditText"
         android:autofillHints =""
         />
     <EditText
-        android:hint="@string/Body_notes"
         android:id="@+id/body_notes"
+        android:hint="@string/Body_notes"
         android:layout_marginTop = "150sp"
         style="@style/addNotes_EditText"
         android:autofillHints=""
