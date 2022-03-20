@@ -44,6 +44,15 @@
         android:layout_marginTop="125dp"
         android:layout_marginBottom="475dp">
     </ListView>
+    <ListView
+        android:id="@+id/Notes_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="100dp">
+    </ListView>
 
 
 </RelativeLayout>

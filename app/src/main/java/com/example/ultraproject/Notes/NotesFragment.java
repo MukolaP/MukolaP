@@ -27,9 +27,11 @@ public class NotesFragment extends Fragment {
 
     String[] items;
     ArrayList<String> listItems;
-    ArrayAdapter<String> adapter;
-    ListView listView;
+    ArrayAdapter<String> adapter_search;
+    ListView listView, notes;
     EditText editText;
+
+    NotesController notesController = new NotesController();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +43,8 @@ public class NotesFragment extends Fragment {
 
         Button bt_newNotes = view.findViewById(R.id.bt_newNotes);
         navigation(bt_newNotes, 1);
+
+        notes = (ListView) view.findViewById(R.id.Notes_listview);
 
         listView = (ListView) view.findViewById(R.id.listview_notes);
         editText = (EditText) view.findViewById(R.id.text_notes);
@@ -64,6 +68,7 @@ public class NotesFragment extends Fragment {
                 } else {
                     searchItem(s.toString());
                 }
+                mam();
             }
 
             @Override
@@ -81,14 +86,14 @@ public class NotesFragment extends Fragment {
                 listItems.remove(item);
             }
         }
-        adapter.notifyDataSetChanged();
+        adapter_search.notifyDataSetChanged();
     }
 
     public final void initList() {
         items = new String[]{"Calculator", "Color helper", "Notes"};
         listItems = new ArrayList<>(Arrays.asList(items));
-        adapter = new ArrayAdapter<>(getContext(), R.layout.list_item_main, R.id.text_item_main, listItems);
-        listView.setAdapter(adapter);
+        adapter_search = new ArrayAdapter<>(getContext(), R.layout.list_item_main, R.id.text_item_main, listItems);
+        listView.setAdapter(adapter_search);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -122,5 +127,11 @@ public class NotesFragment extends Fragment {
             case 2:
                 break;
         }
+    }
+
+    public void mam(){
+        ArrayList<String> listItems = new ArrayList<>(Arrays.asList(notesController.getThemes()));
+        ArrayAdapter<String> adapter_search = new ArrayAdapter<>(getContext(), R.layout.list_item_main, R.id.text_item_main, listItems);
+        notes.setAdapter(adapter_search);
     }
 }
