@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.ultraproject.MainActivity;
 import com.example.ultraproject.R;
 import com.google.android.material.animation.ImageMatrixProperty;
 
@@ -41,7 +42,8 @@ public class WriteNotesFragment extends Fragment {
 
         Button button_add = view.findViewById(R.id.bt_notes_add);
         button_add.setOnClickListener(view1 -> {
-            notesController.addThemes("1");
+            MainActivity mainActivity = (MainActivity) requireActivity();
+            mainActivity.arrayList.add("1");
         });
 
         return view;
@@ -59,4 +61,5 @@ public class WriteNotesFragment extends Fragment {
             }
         });
     }
+
 }

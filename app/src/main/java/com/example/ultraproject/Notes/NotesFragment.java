@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.ultraproject.MainActivity;
 import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
 
@@ -137,9 +138,11 @@ public class NotesFragment extends Fragment {
     }
 
     public void mam() {
-        notesController.addThemes("1");
+//        notesController.addThemes("1");
+        
+        MainActivity mainActivity = (MainActivity) requireActivity();
         ArrayAdapter<String> adapter_search = new ArrayAdapter<>(getContext(),
-                R.layout.list_item_main, R.id.text_item_main, notesController.getThemes());
+                R.layout.list_item_main, R.id.text_item_main, mainActivity.arrayList);
         notes.setAdapter(adapter_search);
     }
 }
