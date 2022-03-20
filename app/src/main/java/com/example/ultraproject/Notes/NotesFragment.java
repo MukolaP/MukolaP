@@ -28,7 +28,9 @@ public class NotesFragment extends Fragment {
     String[] items;
     ArrayList<String> listItems;
     ArrayAdapter<String> adapter_search;
-    ListView listView, notes;
+    ListView listView;
+    @SuppressLint("StaticFieldLeak")
+    static ListView notes;
     EditText editText;
 
     NotesController notesController = new NotesController();
@@ -45,6 +47,7 @@ public class NotesFragment extends Fragment {
         navigation(bt_newNotes, 1);
 
         notes = (ListView) view.findViewById(R.id.Notes_listview);
+        notes.setVisibility(View.VISIBLE);
 
         listView = (ListView) view.findViewById(R.id.listview_notes);
         editText = (EditText) view.findViewById(R.id.text_notes);
@@ -52,6 +55,11 @@ public class NotesFragment extends Fragment {
 
         listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
         listView.setVisibility(View.INVISIBLE);
+
+        Button button_refresh = view.findViewById(R.id.bt_refreshNotes);
+        button_refresh.setOnClickListener(view1 -> {
+            mam();
+        });
 
         editText.addTextChangedListener(new TextWatcher() {
 
@@ -68,7 +76,6 @@ public class NotesFragment extends Fragment {
                 } else {
                     searchItem(s.toString());
                 }
-                mam();
             }
 
             @Override
@@ -129,9 +136,10 @@ public class NotesFragment extends Fragment {
         }
     }
 
-    public void mam(){
-        ArrayList<String> listItems = new ArrayList<>(Arrays.asList(notesController.getThemes()));
-        ArrayAdapter<String> adapter_search = new ArrayAdapter<>(getContext(), R.layout.list_item_main, R.id.text_item_main, listItems);
+    public void mam() {
+        notesController.addThemes("1");
+        ArrayAdapter<String> adapter_search = new ArrayAdapter<>(getContext(),
+                R.layout.list_item_main, R.id.text_item_main, notesController.getThemes());
         notes.setAdapter(adapter_search);
     }
 }

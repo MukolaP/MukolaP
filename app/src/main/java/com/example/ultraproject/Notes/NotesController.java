@@ -1,14 +1,21 @@
 package com.example.ultraproject.Notes;
 
+import java.util.ArrayList;
+
 public class NotesController {
 
-    private String[] themes = new String[]{};
+    private ArrayList<String> themes = new ArrayList<>();
 
-    public void setThemes(String[] themes) {
+    public void setThemes(ArrayList<String> themes) {
         this.themes = themes;
     }
 
-    public String[] getThemes() {
+    public ArrayList<String> getThemes() {
         return themes;
     }
+
+    public void addThemes(String string) {
+        themes.add(string);
+    }
 }
+
