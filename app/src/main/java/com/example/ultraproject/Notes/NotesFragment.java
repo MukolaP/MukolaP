@@ -2,12 +2,9 @@ package com.example.ultraproject.Notes;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,17 +18,10 @@ import com.example.ultraproject.R;
 import com.example.ultraproject.Search.SearchController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class NotesFragment extends Fragment {
 
-    String[] items;
-    ArrayList<String> listItems;
-    ArrayAdapter<String> adapter_search;
-    ListView listView;
-    @SuppressLint("StaticFieldLeak")
-    static ListView notes;
-    EditText editText;
+    private final SearchController searchController = new SearchController();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,63 +34,14 @@ public class NotesFragment extends Fragment {
         Button bt_newNotes = view.findViewById(R.id.bt_newNotes);
         navigation(bt_newNotes, 1);
 
-        notes = view.findViewById(R.id.Notes_listview);
-        notes.setVisibility(View.VISIBLE);
+        ListView listView = view.findViewById(R.id.listview_notes);
+        EditText editText_search = view.findViewById(R.id.text_search_notes);
 
-        listView = view.findViewById(R.id.listview_notes);
-        editText = view.findViewById(R.id.text_notes);
-        initList();
+        ArrayList<String> listItems = NotesController.getArrayList();
 
-        listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
-        listView.setVisibility(View.INVISIBLE);
-
-        Button button_refresh = view.findViewById(R.id.bt_refreshNotes);
-        button_refresh.setOnClickListener(view1 -> {
-            ArrayAdapter<String> adapter_search = new ArrayAdapter<> (getContext(),
-                    R.layout.list_item_main, R.id.text_item_main, NotesController.getArrayList());
-            notes.setAdapter(adapter_search);
-        });
-        
-        editText.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public final void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public final void onTextChanged(CharSequence s, int start, int before, int count) {
-                listView.setVisibility(View.VISIBLE);
-                if (s.toString().equals("")) {
-                    initList();
-                    listView.setVisibility(View.INVISIBLE);
-                } else {
-                    searchItem(s.toString());
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
+        searchController.Search(getContext(), listView, editText_search, listItems);
 
         return view;
-    }
-
-    public final void searchItem(String textToSearch) {
-        for (String item : items) {
-            String textToSearch1 = textToSearch.toLowerCase();
-            if (!item.toLowerCase().contains(textToSearch1)) {
-                listItems.remove(item);
-            }
-        }
-        adapter_search.notifyDataSetChanged();
-    }
-
-    public final void initList() {
-        items = new String[]{"Calculator", "Color helper", "Notes"};
-        listItems = new ArrayList<>(Arrays.asList(items));
-        adapter_search = new ArrayAdapter<>(getContext(), R.layout.list_item_main, R.id.text_item_main, listItems);
-        listView.setAdapter(adapter_search);
     }
 
     @SuppressLint("NonConstantResourceId")

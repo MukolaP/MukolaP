@@ -19,6 +19,9 @@ import com.example.ultraproject.ColorHelper.CHRelatedFragment;
 import com.example.ultraproject.Notes.NotesFragment;
 import com.example.ultraproject.Search.SearchController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class NavigationFragment extends Fragment {
 
     private final SearchController searchController = new SearchController();
@@ -39,7 +42,12 @@ public class NavigationFragment extends Fragment {
         ListView listView = view.findViewById(R.id.listview_main);
         EditText editText_search = view.findViewById(R.id.text_search);
 
-        searchController.Search(listView, editText_search, getContext());
+        String[] items = new String[]{"Calculator", "Color Helper", "Notes"};
+        ArrayList<String> listItems = new ArrayList<>(Arrays.asList(items));
+
+        searchController.Search(getContext(), listView, editText_search, listItems);
+
+        listView.setOnItemClickListener((parent, view1, position, id) -> navigation(position));
 
         return view;
     }

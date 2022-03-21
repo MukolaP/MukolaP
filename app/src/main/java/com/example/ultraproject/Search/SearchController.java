@@ -12,18 +12,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.ultraproject.Notes.NotesController;
 import com.example.ultraproject.R;
 
 import java.util.ArrayList;
 
 public class SearchController extends Fragment {
 
-    String[] items;
-    ArrayList<String> listItems;
-    ArrayAdapter<String> adapter_search;
+    private ArrayAdapter<String> adapter_search;
 
-    public final void Search(ListView listView, EditText editText_search, Context context){
+    public final void Search(Context context, ListView listView, EditText editText_search, ArrayList<String> listItems) {
 
         initList(context, listView, listItems);
         listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
@@ -42,7 +39,8 @@ public class SearchController extends Fragment {
                     initList(context, listView, listItems);
                     listView.setVisibility(View.INVISIBLE);
                 } else {
-                    searchItem(s.toString(), items, listItems, adapter_search);
+                    adapter_search.getFilter().filter(s);
+
                 }
             }
 
@@ -53,18 +51,9 @@ public class SearchController extends Fragment {
         });
     }
 
-    public final void searchItem(String textToSearch, String[] items, ArrayList<String> listItems, ArrayAdapter<String> adapter) {
-        for (String item : items) {
-            String textToSearch1 = textToSearch.toLowerCase();
-            if (!item.toLowerCase().contains(textToSearch1)) {
-                listItems.remove(item);
-            }
-        }
-        adapter.notifyDataSetChanged();
-    }
-
     public final void initList(Context context, ListView listView, ArrayList<String> listItems) {
-        ArrayAdapter<String> adapter_search = new ArrayAdapter<> (context,
+
+        adapter_search = new ArrayAdapter<>(context,
                 R.layout.list_item_main, R.id.text_item_main, listItems);
         listView.setAdapter(adapter_search);
     }
