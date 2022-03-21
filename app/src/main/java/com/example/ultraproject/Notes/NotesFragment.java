@@ -16,9 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.ultraproject.MainActivity;
 import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
+import com.example.ultraproject.Search.SearchController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,11 +44,11 @@ public class NotesFragment extends Fragment {
         Button bt_newNotes = view.findViewById(R.id.bt_newNotes);
         navigation(bt_newNotes, 1);
 
-        notes = (ListView) view.findViewById(R.id.Notes_listview);
+        notes = view.findViewById(R.id.Notes_listview);
         notes.setVisibility(View.VISIBLE);
 
-        listView = (ListView) view.findViewById(R.id.listview_notes);
-        editText = (EditText) view.findViewById(R.id.text_notes);
+        listView = view.findViewById(R.id.listview_notes);
+        editText = view.findViewById(R.id.text_notes);
         initList();
 
         listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
@@ -56,10 +56,8 @@ public class NotesFragment extends Fragment {
 
         Button button_refresh = view.findViewById(R.id.bt_refreshNotes);
         button_refresh.setOnClickListener(view1 -> {
-            MainActivity mainActivity = (MainActivity) requireActivity();
-
             ArrayAdapter<String> adapter_search = new ArrayAdapter<> (getContext(),
-                    R.layout.list_item_main, R.id.text_item_main, mainActivity.arrayList);
+                    R.layout.list_item_main, R.id.text_item_main, NotesController.getArrayList());
             notes.setAdapter(adapter_search);
         });
         
