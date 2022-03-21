@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotesReviewFragment">
+    tools:context=".Notes.NotesReviewFragment">
 
-</FrameLayout>
+    <Button
+        style="@style/backMain_button"
+        android:text="@string/Button_notes"
+        android:id="@+id/back_ToNotesReview"
+        />
+
+    <TextView
+        android:id="@+id/themes_reviewNotes"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="@string/themes"
+        />
+
+    <TextView
+        android:id="@+id/body_reviewNotes"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text=""/>
+</RelativeLayout>

@@ -35,17 +35,6 @@
         android:text="@string/Button_plus"
         android:textSize="18sp"
         />
-    <Button
-        android:id="@+id/bt_refreshNotes"
-        android:layout_width="120sp"
-        android:layout_height="58sp"
-        android:layout_marginStart="10sp"
-        android:layout_marginBottom="10sp"
-        android:layout_alignParentBottom = "true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/refresh"
-        android:textSize="18sp"
-        />
     <ListView
         android:id="@+id/listview_notes"
         android:layout_width="fill_parent"

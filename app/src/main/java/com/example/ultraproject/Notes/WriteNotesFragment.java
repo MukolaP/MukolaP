@@ -12,12 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
 
 public class WriteNotesFragment extends Fragment {
-
-    private EditText theme_notes;
-    private EditText body_notes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,31 +23,38 @@ public class WriteNotesFragment extends Fragment {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_write_notes, null);
 
         Button back_notes = view.findViewById(R.id.back_ToNotes);
-        navigation(back_notes);
+        back_notes.setOnClickListener(view1 -> navigation(0));
 
-        theme_notes = view.findViewById(R.id.theme_notes);
-        body_notes = view.findViewById(R.id.body_notes);
+        EditText theme_notes = view.findViewById(R.id.theme_notes);
+        EditText body_notes = view.findViewById(R.id.body_notes);
 
         Button button_add = view.findViewById(R.id.bt_notes_add);
         button_add.setOnClickListener(view1 -> {
-            NotesController.getArrayList().add(theme_notes.getText().toString());
-            NotesController.getArrayList().add(body_notes.getText().toString());
-         });
+            NotesController.getArrayList_themes().add(theme_notes.getText().toString());
+            NotesController.getArrayList_body().add(body_notes.getText().toString());
+            navigation(1);
+        });
+
 
         return view;
     }
+
     @SuppressLint("NonConstantResourceId")
-    public void navigation(Button button) {
-        button.setOnClickListener(view -> {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            if (view.getId() == R.id.back_ToNotes) {
+    public final void navigation(int pos) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+        switch (pos) {
+            case (0):
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
+                transaction.commit();
+                break;
+            case (1):
                 transaction.setReorderingAllowed(true);
                 transaction.replace(R.id.MainActivity, NotesFragment.class, null);
                 transaction.commit();
-            }
-        });
+                break;
+        }
     }
-
 }

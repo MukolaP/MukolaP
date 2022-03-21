@@ -37,9 +37,11 @@ public class NotesFragment extends Fragment {
         ListView listView = view.findViewById(R.id.listview_notes);
         EditText editText_search = view.findViewById(R.id.text_search_notes);
 
-        ArrayList<String> listItems = NotesController.getArrayList();
+        ArrayList<String> listItems = NotesController.getArrayList_themes();
 
         searchController.Search(getContext(), listView, editText_search, listItems);
+
+        listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
 
         return view;
     }
@@ -66,14 +68,14 @@ public class NotesFragment extends Fragment {
     }
 
     public void transaction(int pos) {
+
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        switch (pos) {
-            case 0:
-            case 1:
-            case 2:
-                break;
-        }
+        transaction.setReorderingAllowed(true);
+        transaction.replace(R.id.MainActivity, NotesReviewFragment.class, null);
+        transaction.commit();
+
+        NotesController.setPos(pos);
     }
 }

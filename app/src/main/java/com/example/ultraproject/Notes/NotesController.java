@@ -3,13 +3,20 @@ package com.example.ultraproject.Notes;
 import java.util.ArrayList;
 
 public class NotesController {
-    private static ArrayList<String> arrayList = new ArrayList<>();
+    private static ArrayList<String> arrayList_themes = new ArrayList<>();
+    private static ArrayList<String> arrayList_body = new ArrayList<>();
 
-    public static ArrayList<String> getArrayList() {
-        return arrayList;
+    private static int pos;
+
+    public static ArrayList<String> getArrayList_themes() {
+        return arrayList_themes;
     }
 
-    public static void setArrayList(ArrayList<String> arrayList) {
-        NotesController.arrayList = arrayList;
+    public static ArrayList<String> getArrayList_body() { return arrayList_body; }
+
+    public static void setPos(int pos) {
+        NotesController.pos = pos;
     }
+
+    public static int getPos() { return pos; }
 }
