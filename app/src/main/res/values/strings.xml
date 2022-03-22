@@ -34,5 +34,6 @@
 
     <string name="refresh">refresh</string>
     <string name="themes">Тема -</string>
+    <string name="name">Название</string>
 
 </resources>

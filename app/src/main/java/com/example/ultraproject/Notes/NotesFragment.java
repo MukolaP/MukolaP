@@ -12,6 +12,7 @@ import android.widget.ListView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
@@ -20,6 +21,8 @@ import com.example.ultraproject.Search.SearchController;
 import java.util.ArrayList;
 
 public class NotesFragment extends Fragment {
+
+    ArrayList<State> states = new ArrayList<>();
 
     private final SearchController searchController = new SearchController();
 
@@ -42,6 +45,11 @@ public class NotesFragment extends Fragment {
         searchController.Search(getContext(), listView, editText_search, listItems);
 
         listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
+
+        setInitialData();
+        RecyclerView recyclerView = view.findViewById(R.id.list_themes);
+        StateAdapter adapter = new StateAdapter(getContext(), states);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
@@ -77,5 +85,13 @@ public class NotesFragment extends Fragment {
         transaction.commit();
 
         NotesController.setPos(pos);
+    }
+    private void setInitialData(){
+
+        states.add(new State ("Бразилия"));
+        states.add(new State ("Аргентина"));
+        states.add(new State ("Колумбия"));
+        states.add(new State ("Уругвай"));
+        states.add(new State ("Чили"));
     }
 }
