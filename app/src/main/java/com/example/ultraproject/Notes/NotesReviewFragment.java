@@ -16,9 +16,6 @@ import com.example.ultraproject.R;
 
 public class NotesReviewFragment extends Fragment {
 
-    TextView themeNotes;
-    TextView bodyNotes;
-
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,26 +23,26 @@ public class NotesReviewFragment extends Fragment {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_notes_review, null);
 
         Button back_notes = view.findViewById(R.id.back_ToNotesReview);
-        back_notes.setOnClickListener(view1 -> navigation(0));
+        navigation(back_notes);
 
-        themeNotes = view.findViewById(R.id.themes_reviewNotes);
-        bodyNotes = view.findViewById(R.id.body_reviewNotes);
+        TextView themeNotes = view.findViewById(R.id.themes_reviewNotes);
+        TextView bodyNotes = view.findViewById(R.id.body_reviewNotes);
 
-        themeNotes.setText(themeNotes.getText() + " " + NotesController.getArrayList_themes().get(NotesController.getPos()));
-        bodyNotes.setText(NotesController.getArrayList_body().get(NotesController.getPos()));
+        themeNotes.setText(" Тема - " + NotesModel.getListThemes().get(NotesModel.getPos()));
+        bodyNotes.setText(NotesModel.getListBody().get(NotesModel.getPos()));
 
         return view;
     }
 
     @SuppressLint("NonConstantResourceId")
-    public final void navigation(int pos) {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        if (pos == 0) {
+    private void navigation(Button button) {
+        button.setOnClickListener(view -> {
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             transaction.setReorderingAllowed(true);
             transaction.replace(R.id.MainActivity, NotesFragment.class, null);
             transaction.commit();
-        }
+        });
     }
 }

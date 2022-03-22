@@ -32,7 +32,7 @@ public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.themesView.setText(NotesController.getArrayList_themes().get(position));
+        holder.themesView.setText(NotesModel.getListThemes().get(position));
     }
 
     @Override

@@ -17,14 +17,14 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.ultraproject.Calculator.Calculator;
 import com.example.ultraproject.ColorHelper.CHRelatedFragment;
 import com.example.ultraproject.Notes.NotesFragment;
-import com.example.ultraproject.Search.SearchController;
+import com.example.ultraproject.Search.Search;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NavigationFragment extends Fragment {
 
-    private final SearchController searchController = new SearchController();
+    private final Search search = new Search();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +45,7 @@ public class NavigationFragment extends Fragment {
         String[] items = new String[]{"Calculator", "Color Helper", "Notes"};
         ArrayList<String> listItems = new ArrayList<>(Arrays.asList(items));
 
-        searchController.Search(getContext(), listView, editText_search, listItems);
+        search.Search(getContext(), listView, editText_search, listItems);
 
         listView.setOnItemClickListener((parent, view1, position, id) -> navigation(position));
 

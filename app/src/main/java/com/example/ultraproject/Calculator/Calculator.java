@@ -22,8 +22,8 @@ public final class Calculator extends Fragment {
 
     private boolean equal = false;
 
-    private final CalculatorModel calculatorModel = new CalculatorModel();
-    private ScrollView mScrollView;
+    private final CalculatorController calculatorController = new CalculatorController();
+    private ScrollView scrollView;
     private TextView text;
 
     @SuppressLint("SetTextI18n")
@@ -36,116 +36,58 @@ public final class Calculator extends Fragment {
         navigation(back_to_main);
 
         text = view.findViewById(R.id.result);
-        mScrollView = view.findViewById(R.id.SCROLLER_ID);
+        scrollView = view.findViewById(R.id.SCROLLER_ID);
 
-        Button ButtonNumber_zero = view.findViewById(R.id.number_zero);
-        Button ButtonNumber_one = view.findViewById(R.id.number_one);
-        Button ButtonNumber_two = view.findViewById(R.id.number_two);
-        Button ButtonNumber_three = view.findViewById(R.id.number_three);
-        Button ButtonNumber_four = view.findViewById(R.id.number_four);
-        Button ButtonNumber_five = view.findViewById(R.id.number_five);
-        Button ButtonNumber_six = view.findViewById(R.id.number_six);
-        Button ButtonNumber_seven = view.findViewById(R.id.number_seven);
-        Button ButtonNumber_eight = view.findViewById(R.id.number_eight);
-        Button ButtonNumber_nine = view.findViewById(R.id.number_nine);
+        Button zero = view.findViewById(R.id.number_zero);
+        Button one = view.findViewById(R.id.number_one);
+        Button two = view.findViewById(R.id.number_two);
+        Button three = view.findViewById(R.id.number_three);
+        Button four = view.findViewById(R.id.number_four);
+        Button five = view.findViewById(R.id.number_five);
+        Button six = view.findViewById(R.id.number_six);
+        Button seven = view.findViewById(R.id.number_seven);
+        Button eight = view.findViewById(R.id.number_eight);
+        Button nine = view.findViewById(R.id.number_nine);
 
-        Button ButtonAction_plus = view.findViewById(R.id.action_plus);
-        Button ButtonAction_minus = view.findViewById(R.id.action_minus);
-        Button ButtonAction_multiplication = view.findViewById(R.id.action_multiplication);
-        Button ButtonAction_division = view.findViewById(R.id.action_division);
-        Button ButtonAction_PerCent = view.findViewById(R.id.action_per_cent);
+        Button plus = view.findViewById(R.id.action_plus);
+        Button minus = view.findViewById(R.id.action_minus);
+        Button multiplication = view.findViewById(R.id.action_multiplication);
+        Button division = view.findViewById(R.id.action_division);
+        Button perCent = view.findViewById(R.id.action_per_cent);
 
         Button ButtonEqual = view.findViewById(R.id.equal);
 
-        Button ButtonDeleteOne = view.findViewById(R.id.delete_one);
-        Button ButtonDeleteAll = view.findViewById(R.id.delete_all);
+        Button deleteOne = view.findViewById(R.id.delete_one);
+        Button deleteAll = view.findViewById(R.id.delete_all);
 
         text.setMovementMethod(new ScrollingMovementMethod());
 
-        ButtonNumber_zero.setOnClickListener(
-                view1 -> {
-                    if (!text.getText().toString().equals("") & calculatorModel.ZeroException()) {
-                        text.setText(text.getText() + "0");
-                        calculatorModel.setString(calculatorModel.getString() + "0");
-                    }
-                });
+        zero(zero);
 
-        ButtonNumPressed(ButtonNumber_one, "1");
-        ButtonNumPressed(ButtonNumber_two, "2");
-        ButtonNumPressed(ButtonNumber_three, "3");
-        ButtonNumPressed(ButtonNumber_four, "4");
-        ButtonNumPressed(ButtonNumber_five, "5");
-        ButtonNumPressed(ButtonNumber_six, "6");
-        ButtonNumPressed(ButtonNumber_seven, "7");
-        ButtonNumPressed(ButtonNumber_eight, "8");
-        ButtonNumPressed(ButtonNumber_nine, "9");
+        ButtonNumPressed(one, "1");
+        ButtonNumPressed(two, "2");
+        ButtonNumPressed(three, "3");
+        ButtonNumPressed(four, "4");
+        ButtonNumPressed(five, "5");
+        ButtonNumPressed(six, "6");
+        ButtonNumPressed(seven, "7");
+        ButtonNumPressed(eight, "8");
+        ButtonNumPressed(nine, "9");
 
-        ButtonActionPressed(ButtonAction_plus, "+");
-        ButtonActionPressed(ButtonAction_multiplication, "*");
+        ButtonActionPressed(plus, "+");
+        ButtonActionPressed(multiplication, "*");
 
-        ButtonAction_minus.setOnClickListener(
-                view18 -> {
-                    if (calculatorModel.StringEqualAction()){
-                        text.setText(text.getText() + "-");
-                        calculatorModel.setString(calculatorModel.getString() + "-");
-                        calculatorModel.setAction("-");
-                    }
-                });
+        minus(minus);
 
-        ButtonActionPressed(ButtonAction_division, "/");
-        ButtonActionPressed(ButtonAction_PerCent, "%");
+        ButtonActionPressed(division, "/");
+        ButtonActionPressed(perCent, "%");
 
-        ButtonEqual.setOnClickListener(
-                view14 -> {
-                    if (!calculatorModel.getString().equals("") & !calculatorModel.getAction().equals("")) {
-                        if (calculatorModel.StringEqualAction()) {
-                            text.setText(text.getText() + calculatorModel.solution() + "\n");
-                            equal = true;
-                            mScrollView.fullScroll(View.FOCUS_DOWN);
-                        }
-                    }
-                });
+        equal(ButtonEqual);
 
-        ButtonDeleteOne.setOnClickListener(
-                view15 -> {
-                    if (!equal & calculatorModel.getString().length() != 0) {
-                        text.setText(calculatorModel.getDeleteOneString());
-                    } else if (equal) {
-                        text.setText("");
-                        equal = false;
-                    }
-                });
-
-        ButtonDeleteAll.setOnClickListener(
-                view16 -> {
-                    text.setText("");
-                    calculatorModel.setString("");
-                });
+        deleteOne(deleteOne);
+        deleteAll(deleteAll);
 
         return view;
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void ButtonNumPressed(Button button, String number) {
-        button.setOnClickListener(
-                view -> {
-                    text.setText(text.getText() + number);
-                    calculatorModel.setString(calculatorModel.getString() + number);
-                });
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void ButtonActionPressed(Button button, String action) {
-        button.setOnClickListener(
-                view -> {
-                    if (calculatorModel.getString().length() != 0 & calculatorModel.StringEqualAction()) {
-                        text.setText(text.getText() + action);
-                        calculatorModel.setString(calculatorModel.getString() + action);
-                        String new_action = action.replace("+", "\\+");
-                        new_action = new_action.replace("*", "\\*");
-                        calculatorModel.setAction(new_action);
-                    }
-                });
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -158,6 +100,79 @@ public final class Calculator extends Fragment {
                 transaction.setReorderingAllowed(true);
                 transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
                 transaction.commit();
+            }
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void ButtonNumPressed(Button button, String number) {
+        button.setOnClickListener(view -> {
+            text.setText(text.getText() + number);
+            calculatorController.setString(calculatorController.getString() + number);
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void ButtonActionPressed(Button button, String action) {
+        button.setOnClickListener(view -> {
+            if (calculatorController.getString().length() != 0 & calculatorController.StringEqualAction()) {
+                text.setText(text.getText() + action);
+                calculatorController.setString(calculatorController.getString() + action);
+                String new_action = action.replace("+", "\\+");
+                new_action = new_action.replace("*", "\\*");
+                calculatorController.setAction(new_action);
+            }
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void minus(Button button){
+        button.setOnClickListener(view18 -> {
+            if (calculatorController.StringEqualAction()) {
+                text.setText(text.getText() + "-");
+                calculatorController.setString(calculatorController.getString() + "-");
+                calculatorController.setAction("-");
+            }
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void equal(Button button){
+        button.setOnClickListener(view14 -> {
+            if (!calculatorController.getString().equals("") & !calculatorController.getAction().equals("")) {
+                if (calculatorController.StringEqualAction()) {
+                    text.setText(text.getText() + calculatorController.solution() + "\n");
+                    equal = true;
+                    scrollView.fullScroll(View.FOCUS_DOWN);
+                }
+            }
+        });
+    }
+
+    public void deleteOne(Button button){
+        button.setOnClickListener(view15 -> {
+            if (!equal & calculatorController.getString().length() != 0) {
+                text.setText(calculatorController.getDeleteOneString());
+            } else if (equal) {
+                text.setText("");
+                equal = false;
+            }
+        });
+    }
+
+    public void deleteAll(Button button){
+        button.setOnClickListener(view16 -> {
+            text.setText("");
+            calculatorController.setString("");
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void zero(Button button){
+        button.setOnClickListener(view1 -> {
+            if (!text.getText().toString().equals("") & calculatorController.ZeroException()) {
+                text.setText(text.getText() + "0");
+                calculatorController.setString(calculatorController.getString() + "0");
             }
         });
     }

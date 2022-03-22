@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
 
 public class WriteNotesFragment extends Fragment {
@@ -23,38 +22,32 @@ public class WriteNotesFragment extends Fragment {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_write_notes, null);
 
         Button back_notes = view.findViewById(R.id.back_ToNotes);
-        back_notes.setOnClickListener(view1 -> navigation(0));
+        back_notes.setOnClickListener(view1 -> navigation());
 
         EditText theme_notes = view.findViewById(R.id.theme_notes);
         EditText body_notes = view.findViewById(R.id.body_notes);
 
         Button button_add = view.findViewById(R.id.bt_notes_add);
-        button_add.setOnClickListener(view1 -> {
-            NotesController.getArrayList_themes().add(theme_notes.getText().toString());
-            NotesController.getArrayList_body().add(body_notes.getText().toString());
-            navigation(1);
-        });
-
+        addToNotes(button_add, theme_notes, body_notes);
 
         return view;
     }
 
     @SuppressLint("NonConstantResourceId")
-    public final void navigation(int pos) {
+    private void navigation() {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        switch (pos) {
-            case (0):
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
-                transaction.commit();
-                break;
-            case (1):
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, NotesFragment.class, null);
-                transaction.commit();
-                break;
-        }
+        transaction.setReorderingAllowed(true);
+        transaction.replace(R.id.MainActivity, NotesFragment.class, null);
+        transaction.commit();
+    }
+
+    private void addToNotes(Button button, EditText theme_notes, EditText body_notes){
+        button.setOnClickListener(view1 -> {
+            NotesModel.getListThemes().add(theme_notes.getText().toString());
+            NotesModel.getListBody().add(body_notes.getText().toString());
+            navigation();
+        });
     }
 }

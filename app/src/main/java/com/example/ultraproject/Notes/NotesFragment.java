@@ -16,17 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
-import com.example.ultraproject.Search.SearchController;
-
-import java.util.ArrayList;
+import com.example.ultraproject.Search.Search;
 
 public class NotesFragment extends Fragment {
 
-    private final SearchController searchController = new SearchController();
-
-
-
-    RecyclerView recyclerView;
+    private final Search search = new Search();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,22 +35,20 @@ public class NotesFragment extends Fragment {
 
         ListView listView = view.findViewById(R.id.listview_notes);
         EditText editText_search = view.findViewById(R.id.text_search_notes);
+        RecyclerView recyclerView = view.findViewById(R.id.list_themes);
 
-        ArrayList<String> listItems = NotesController.getArrayList_themes();
-
-        searchController.Search(getContext(), listView, editText_search, listItems);
+        search.Search(getContext(), listView, editText_search, NotesModel.getListThemes());
 
         listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
 
-        recyclerView = view.findViewById(R.id.list_themes);
-        StateAdapter adapter = new StateAdapter(getContext(), NotesController.getArrayList_themes());
+        StateAdapter adapter = new StateAdapter(getContext(), NotesModel.getListThemes());
         recyclerView.setAdapter(adapter);
 
         return view;
     }
 
     @SuppressLint("NonConstantResourceId")
-    public final void navigation(Button button, int pos) {
+    private void navigation(Button button, int pos) {
         button.setOnClickListener(view -> {
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -76,7 +68,7 @@ public class NotesFragment extends Fragment {
         });
     }
 
-    public void transaction(int pos) {
+    private void transaction(int pos) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
@@ -84,6 +76,6 @@ public class NotesFragment extends Fragment {
         transaction.replace(R.id.MainActivity, NotesReviewFragment.class, null);
         transaction.commit();
 
-        NotesController.setPos(pos);
+        NotesModel.setPos(pos);
     }
 }

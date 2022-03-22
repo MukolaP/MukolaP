@@ -16,7 +16,7 @@ import com.example.ultraproject.R;
 
 import java.util.ArrayList;
 
-public class SearchController extends Fragment {
+public class Search extends Fragment {
 
     private ArrayAdapter<String> adapter_search;
 
