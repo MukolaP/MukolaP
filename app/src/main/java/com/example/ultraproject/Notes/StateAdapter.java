@@ -11,17 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ultraproject.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
 
     private final LayoutInflater inflater;
-    private final List<State> states;
+    private final ArrayList<String> states;
 
-    StateAdapter(Context context, List<State> states) {
+    StateAdapter(Context context, ArrayList<String> states) {
         this.states = states;
         this.inflater = LayoutInflater.from(context);
     }
+
     @NonNull
     @Override
     public StateAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,8 +33,8 @@ public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(StateAdapter.ViewHolder holder, int position) {
-        State state = states.get(position);
-        holder.themesView.setText(state.getName());
+
+        holder.themesView.setText(NotesController.getArrayList_themes().get(position));
     }
 
     @Override

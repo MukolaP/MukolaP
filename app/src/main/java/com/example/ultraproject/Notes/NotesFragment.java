@@ -22,8 +22,6 @@ import java.util.ArrayList;
 
 public class NotesFragment extends Fragment {
 
-    ArrayList<State> states = new ArrayList<>();
-
     private final SearchController searchController = new SearchController();
 
     @Override
@@ -46,11 +44,10 @@ public class NotesFragment extends Fragment {
 
         listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
 
-        setInitialData();
         RecyclerView recyclerView = view.findViewById(R.id.list_themes);
-        StateAdapter adapter = new StateAdapter(getContext(), states);
+        StateAdapter adapter = new StateAdapter(getContext(), NotesController.getArrayList_themes());
         recyclerView.setAdapter(adapter);
-
+        
         return view;
     }
 
@@ -85,13 +82,5 @@ public class NotesFragment extends Fragment {
         transaction.commit();
 
         NotesController.setPos(pos);
-    }
-    private void setInitialData(){
-
-        states.add(new State ("Бразилия"));
-        states.add(new State ("Аргентина"));
-        states.add(new State ("Колумбия"));
-        states.add(new State ("Уругвай"));
-        states.add(new State ("Чили"));
     }
 }
