@@ -39,15 +39,19 @@ public class CHRelatedFragment extends Fragment implements View.OnClickListener 
 
         choosenColor = view.findViewById(R.id.main_color);
         complementaryColor = view.findViewById(R.id.complementaryColor);
+
         leftAnalogousColor = view.findViewById(R.id.left_analogous_color);
         centerAnalogousColor = view.findViewById(R.id.center_analogous_color);
         rightAnalogousColor = view.findViewById(R.id.right_analogous_color);
+
         leftSplitComplementary = view.findViewById(R.id.left_split_complementary);
         centerSplitComplementary = view.findViewById(R.id.center_split_complementary);
         rightSplitComplementary = view.findViewById(R.id.right_split_complementary);
+
         leftTriadic = view.findViewById(R.id.left_triadic);
         centerTriadic = view.findViewById(R.id.center_triadic);
         rightTriadic= view.findViewById(R.id.right_triadic);
+
         FloatingActionButton floatingActionButton = view.findViewById(R.id.fab);
 
         Button back_to_main = view.findViewById(R.id.back_colorHelper);
@@ -62,8 +66,20 @@ public class CHRelatedFragment extends Fragment implements View.OnClickListener 
         super.onResume();
 
         choosenColor.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
-        complementaryColor.setBackgroundColor(Color.parseColor(ColorController.ComplementaryColor(
+        complementaryColor.setBackgroundColor(Color.parseColor(ColorController.complementaryColor(
                 ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+
+        leftAnalogousColor.setBackgroundColor(Color.parseColor(ColorController.leftAnalogousColor(
+                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+        rightAnalogousColor.setBackgroundColor(Color.parseColor(ColorController.rightAnalogousColor(
+                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+        centerAnalogousColor.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
+
+        leftSplitComplementary.setBackgroundColor(Color.parseColor(ColorController.leftSplitComplementary(
+                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+        rightSplitComplementary.setBackgroundColor(Color.parseColor(ColorController.rightSplitComplementary(
+                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+        centerSplitComplementary.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
 
     }
 
