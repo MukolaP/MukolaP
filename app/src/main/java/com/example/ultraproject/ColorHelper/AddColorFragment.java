@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
-import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
 
 
@@ -24,6 +24,16 @@ public class AddColorFragment extends Fragment {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_add_color, null);
         Button back = view.findViewById(R.id.back_to_related);
         navigation(back);
+
+        EditText setColor = view.findViewById(R.id.set_color);
+        Button addColor = view.findViewById(R.id.add_color);
+        addColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ColorValue.setColor("#"+setColor.getText().toString());
+            }
+        });
+
         return view;
     }
     @SuppressLint("NonConstantResourceId")
