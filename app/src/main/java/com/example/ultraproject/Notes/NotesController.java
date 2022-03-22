@@ -3,8 +3,8 @@ package com.example.ultraproject.Notes;
 import java.util.ArrayList;
 
 public class NotesController {
-    private static ArrayList<String> arrayList_themes = new ArrayList<>();
-    private static ArrayList<String> arrayList_body = new ArrayList<>();
+    private static final ArrayList<String> arrayList_themes = new ArrayList<>();
+    private static final ArrayList<String> arrayList_body = new ArrayList<>();
 
     private static int pos;
 

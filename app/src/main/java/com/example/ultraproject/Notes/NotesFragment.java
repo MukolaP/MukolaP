@@ -24,6 +24,10 @@ public class NotesFragment extends Fragment {
 
     private final SearchController searchController = new SearchController();
 
+
+
+    RecyclerView recyclerView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,10 +48,10 @@ public class NotesFragment extends Fragment {
 
         listView.setOnItemClickListener((parent, view1, position, id) -> transaction(position));
 
-        RecyclerView recyclerView = view.findViewById(R.id.list_themes);
+        recyclerView = view.findViewById(R.id.list_themes);
         StateAdapter adapter = new StateAdapter(getContext(), NotesController.getArrayList_themes());
         recyclerView.setAdapter(adapter);
-        
+
         return view;
     }
 
@@ -73,7 +77,6 @@ public class NotesFragment extends Fragment {
     }
 
     public void transaction(int pos) {
-
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);

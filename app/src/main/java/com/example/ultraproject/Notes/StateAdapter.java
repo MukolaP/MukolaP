@@ -13,7 +13,7 @@ import com.example.ultraproject.R;
 
 import java.util.ArrayList;
 
-public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>{
+public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
     private final ArrayList<String> states;
@@ -25,15 +25,13 @@ public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>
 
     @NonNull
     @Override
-    public StateAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item_notes, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(StateAdapter.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(ViewHolder holder, int position) {
         holder.themesView.setText(NotesController.getArrayList_themes().get(position));
     }
 
@@ -44,7 +42,8 @@ public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView themesView;
-        ViewHolder(View view){
+
+        ViewHolder(View view) {
             super(view);
             themesView = view.findViewById(R.id.themes);
         }
