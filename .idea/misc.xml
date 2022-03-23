@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UltraProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.294" />
+        <entry key="..\:/UltraProject/app/src/main/res/drawable/rectangle.xml" value="0.2985" />
+        <entry key="..\:/UltraProject/app/src/main/res/drawable/rectangledrowableback.xml" value="0.2985" />
+        <entry key="..\:/UltraProject/app/src/main/res/drawable/text_stroke.xml" value="0.2985" />
         <entry key="..\:/UltraProject/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/UltraProject/app/src/main/res/layout/fragment_add_color.xml" value="0.358695652173913" />
         <entry key="..\:/UltraProject/app/src/main/res/layout/fragment_c_h_related.xml" value="0.358695652173913" />

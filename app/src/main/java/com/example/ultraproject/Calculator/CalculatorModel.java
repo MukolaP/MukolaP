@@ -4,6 +4,7 @@ public class CalculatorModel {
 
     protected String string = "", action = "";
     protected int value, value1;
+    protected boolean equal = false;
 
     public final String getString() { return string; }
 

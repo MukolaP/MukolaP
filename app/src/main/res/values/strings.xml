@@ -40,5 +40,6 @@
     <string name="analogous_colors">analogous colors</string>
     <string name="split_complementary_colors">split complementary colors</string>
     <string name="triadic_colors">triadic colors</string>
+    <string name="s">S</string>
 
 </resources>

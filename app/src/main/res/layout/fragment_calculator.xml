@@ -5,11 +5,22 @@
     android:id="@+id/fragment_calculator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+
     tools:context=".Calculator.Calculator">
 
     <Button
         android:id="@+id/back_calculator"
-        style="@style/backMain_button"/>
+        android:layout_width = "100dp"
+        android:layout_height = "50dp"
+        android:layout_marginStart = "5dp"
+        android:layout_marginTop = "5dp"
+        android:layout_marginEnd = "5dp"
+        android:layout_marginBottom = "5dp"
+        android:text = "@string/Button_back"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:textSize = "13sp" />
 
     <Button
         style="@style/calc_button"
@@ -17,17 +28,17 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="125dp"
         android:layout_marginTop="625dp"
-        android:text="@string/Button_zero"
-        />
+        android:text="@string/Button_zero" />
+
     <Button
         android:id="@+id/number_one"
         style="@style/calc_button"
-        android:layout_above="@+id/action_per_cent"
+        android:layout_above="@+id/action_swipe"
         android:layout_marginStart="50dp"
         android:layout_marginTop="575dp"
         android:layout_marginBottom="-625dp"
-        android:text="@string/Button_one"
-        />
+        android:text="@string/Button_one" />
+
     <Button
         android:id="@+id/number_two"
         style="@style/calc_button"
@@ -35,8 +46,8 @@
         android:layout_marginStart="125dp"
         android:layout_marginTop="575dp"
         android:layout_marginBottom="-625dp"
-        android:text="@string/Button_two"
-        />
+        android:text="@string/Button_two" />
+
     <Button
         style="@style/calc_button"
         android:id="@+id/number_three"
@@ -44,8 +55,8 @@
         android:layout_marginBottom="-625dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="575dp"
-        android:text="@string/Button_three"
-        />
+        android:text="@string/Button_three" />
+
     <Button
         style="@style/calc_button"
         android:id="@+id/number_four"
@@ -53,8 +64,8 @@
         android:layout_marginBottom="-575dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="525dp"
-        android:text="@string/Button_four"
-        />
+        android:text="@string/Button_four" />
+
     <Button
         style="@style/calc_button"
         android:id="@+id/number_five"
@@ -62,8 +73,8 @@
         android:layout_marginBottom="-575dp"
         android:layout_marginStart="125dp"
         android:layout_marginTop="525dp"
-        android:text="@string/Button_five"
-        />
+        android:text="@string/Button_five" />
+
     <Button
         style="@style/calc_button"
         android:id="@+id/number_six"
@@ -71,8 +82,8 @@
         android:layout_marginBottom="-575dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="525dp"
-        android:text="@string/Button_six"
-        />
+        android:text="@string/Button_six" />
+
 
     <Button
         android:id="@+id/number_seven"
@@ -82,6 +93,7 @@
         android:layout_marginTop="475dp"
         android:layout_marginBottom="-525dp"
         android:text="@string/Button_seven" />
+
     <Button
         style="@style/calc_button"
         android:id="@+id/number_eight"
@@ -89,8 +101,8 @@
         android:layout_marginBottom="-525dp"
         android:layout_marginStart="125dp"
         android:layout_marginTop="475dp"
-        android:text="@string/Button_eight"
-        />
+        android:text="@string/Button_eight" />
+
     <Button
         style="@style/calc_button"
         android:id="@+id/number_nine"
@@ -98,12 +110,11 @@
         android:layout_marginBottom="-525dp"
         android:layout_marginStart="200dp"
         android:layout_marginTop="475dp"
-        android:text="@string/Button_nine"
-        />
+        android:text="@string/Button_nine" />
 
     <Button
         android:id="@+id/delete_one"
-        style="@style/calc_button"
+        style="@style/action_button"
         android:layout_above="@+id/number_two"
         android:layout_marginStart="125dp"
         android:layout_marginTop="425dp"
@@ -112,7 +123,7 @@
 
     <Button
         android:id="@+id/delete_all"
-        style="@style/calc_button"
+        style="@style/action_button"
         android:layout_above="@+id/number_seven"
         android:layout_marginStart="50dp"
         android:layout_marginTop="425dp"
@@ -121,25 +132,24 @@
 
     <Button
         android:id="@+id/action_plus"
-        style="@style/calc_button"
+        style="@style/action_button"
         android:layout_above="@+id/action_minus"
         android:layout_marginStart="275dp"
         android:layout_marginTop="525dp"
         android:layout_marginBottom="-575dp"
         android:text="@string/Button_plus" />
     <Button
-        style="@style/calc_button"
+        style="@style/action_button"
         android:id="@+id/action_minus"
         android:layout_above="@+id/equal"
         android:layout_marginBottom="-625dp"
         android:layout_marginStart="275dp"
         android:layout_marginTop="575dp"
-        android:text="@string/Button_minus"
-        />
+        android:text="@string/Button_minus" />
 
     <Button
         android:id="@+id/action_multiplication"
-        style="@style/calc_button"
+        style="@style/action_button"
         android:layout_above="@+id/action_plus"
         android:layout_marginStart="275dp"
         android:layout_marginTop="475dp"
@@ -148,20 +158,30 @@
 
     <Button
         android:id="@+id/action_division"
-        style="@style/calc_button"
+        style="@style/action_button"
         android:layout_above="@+id/action_multiplication"
         android:layout_marginStart="275dp"
         android:layout_marginTop="425dp"
         android:layout_marginBottom="-475dp"
         android:text="@string/Button_division" />
+
     <Button
-        android:id="@+id/action_per_cent"
-        style="@style/calc_button"
+        android:id="@+id/action_swipe"
+        style="@style/action_button"
         android:layout_alignParentBottom = "true"
         android:layout_marginStart="50dp"
         android:layout_marginTop="625dp"
-        android:text="@string/Button_percent"
-        />
+        android:text="@string/s"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/action_per_cent"
+        style="@style/action_button"
+        android:layout_above = "@id/number_nine"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="425dp"
+        android:layout_marginBottom="-475dp"
+        android:text="@string/Button_percent" />
 
     <Button
         android:id="@+id/equal"
@@ -169,22 +189,40 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="275dp"
         android:layout_marginTop="625dp"
+        android:layout_width = "55dp"
+        android:layout_height = "50dp"
+        android:textSize = "15sp"
+        android:textColor = "@color/white"
+        android:backgroundTint = "@color/orange"
         android:text="@string/Button_equal" />
+
     <Button
         android:id="@+id/coma"
         style="@style/calc_button"
         android:layout_alignParentBottom = "true"
         android:layout_marginStart="200dp"
         android:layout_marginTop="625dp"
-        android:text="@string/Button_coma"
-        android:visibility="invisible"
-        />
+        android:text="@string/Button_coma" />
+
+    <TextView
+        android:id="@+id/paradigm"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:gravity="bottom|right"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="90dp"
+        android:layout_alignParentEnd = "true"
+        tools:ignore="RtlHardcoded" />
 
     <ScrollView
         android:id="@+id/SCROLLER_ID"
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="0dp"
+        android:layout_alignParentEnd = "true"
         android:fillViewport="true"
         android:scrollbars="vertical"
         tools:ignore="ExtraText">
@@ -193,9 +231,10 @@
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:gravity="bottom|right"
             android:textSize="24sp"
             android:textColor="@color/white"
-            />
+            tools:ignore="RtlHardcoded" />
     </ScrollView>
+
 </RelativeLayout>

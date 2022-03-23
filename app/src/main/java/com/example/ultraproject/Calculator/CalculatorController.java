@@ -1,7 +1,15 @@
 package com.example.ultraproject.Calculator;
 
+import android.annotation.SuppressLint;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+
 public final class CalculatorController extends CalculatorModel{
 
+    @NonNull
     public final String solution (){
         switch (action) {
             case ("\\+"):
@@ -45,8 +53,8 @@ public final class CalculatorController extends CalculatorModel{
     public final String getDeleteOneString(){
         return string = string.substring(0, string.length() - 1); }
 
-    public final boolean StringEqualAction() {
-        if (string.length() != 0) {
+    public final boolean stringEqualAction() {
+        if (stringNull()) {
             String action = getAction().replace("\\+", "+");
             action = action.replace("\\*", "*");
             return !string.substring(string.length() - 1).equals(action);
@@ -54,5 +62,81 @@ public final class CalculatorController extends CalculatorModel{
         return true;
     }
 
-    public final boolean ZeroException(){ return !string.endsWith("/"); }
+    public final boolean zeroException(){ return !string.endsWith("/"); }
+
+    public final boolean stringNull(){ return string.length() != 0; }
+
+    public void EditView(@NonNull TextView text){ text.setText(string); }
+
+    @SuppressLint("SetTextI18n")
+    public void numPressed(@NonNull Button button, String number, TextView text) {
+        button.setOnClickListener(view -> {
+            string += number;
+            EditView(text);
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void actionPressed(@NonNull Button button, String action, TextView text) {
+        button.setOnClickListener(view -> {
+            if (stringNull() & stringEqualAction()) {
+                string += action;
+                EditView(text);
+
+                String new_action = action.replace("+", "\\+");
+                new_action = new_action.replace("*", "\\*");
+                this.action = new_action;
+            }
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void minus(@NonNull Button button, TextView text){
+        button.setOnClickListener(view18 -> {
+            if (stringEqualAction()) {
+                string += "-";
+                action = "-";
+                EditView(text);
+            }
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void equal(@NonNull Button button, TextView text, ScrollView scrollView){
+        button.setOnClickListener(view14 -> {
+            if (!string.equals("") & !action.equals("") & stringEqualAction()) {
+                text.setText(text.getText() + solution());
+                scrollView.fullScroll(View.FOCUS_DOWN);
+                equal = true;
+            }
+        });
+    }
+
+    public void deleteOne(@NonNull Button button, TextView text){
+        button.setOnClickListener(view15 -> {
+            if (!equal & stringNull()) {
+                text.setText(getDeleteOneString());
+            } else if (equal) {
+                text.setText("");
+                equal = false;
+            }
+        });
+    }
+
+    public void deleteAll(@NonNull Button button, TextView text){
+        button.setOnClickListener(view16 -> {
+            string = "";
+            EditView(text);
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void zero(@NonNull Button button, TextView text){
+        button.setOnClickListener(view1 -> {
+            if (stringNull() & zeroException()) {
+                string += "0";
+                EditView(text);
+            }
+        });
+    }
 }
