@@ -4,11 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UltraProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.294" />
-        <entry key="..\:/UltraProject/app/src/main/res/drawable/rectangle.xml" value="0.2985" />
-        <entry key="..\:/UltraProject/app/src/main/res/drawable/rectangledrowableback.xml" value="0.2985" />
-        <entry key="..\:/UltraProject/app/src/main/res/drawable/text_stroke.xml" value="0.2985" />
         <entry key="..\:/UltraProject/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
-        <entry key="..\:/UltraProject/app/src/main/res/layout/fragment_add_color.xml" value="0.358695652173913" />
         <entry key="..\:/UltraProject/app/src/main/res/layout/fragment_c_h_related.xml" value="0.358695652173913" />
         <entry key="..\:/UltraProject/app/src/main/res/layout/fragment_calculator.xml" value="0.23772609819121446" />
         <entry key="..\:/UltraProject/app/src/main/res/layout/fragment_color_helper.xml" value="0.358695652173913" />
@@ -24,7 +20,8 @@
         <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/drawable/text_stroke.xml" value="0.181" />
         <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/layout/fragment_add_color.xml" value="0.2125" />
         <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/layout/fragment_calculator.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/layout/fragment_color_helper.xml" value="0.2" />
+        <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/layout/fragment_color_helper.xml" value="0.264" />
+        <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/layout/fragment_notes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/layout/list_item.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/donchik/AndroidStudioProjects/UltraProject/app/src/main/res/menu/menu_color_helper.xml" value="0.25416666666666665" />
       </map>

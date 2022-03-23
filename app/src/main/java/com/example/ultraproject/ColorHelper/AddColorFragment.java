@@ -31,6 +31,15 @@ public class AddColorFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ColorValue.setColor("#"+setColor.getText().toString());
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                if (view.getId() == R.id.add_color) {
+                    transaction.setReorderingAllowed(true);
+                    transaction.replace(R.id.MainActivity, CHRelatedFragment.class, null);
+                    transaction.commit();
+                }
+
             }
         });
 

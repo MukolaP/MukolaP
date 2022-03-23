@@ -33,10 +33,9 @@
         />
 
     <FrameLayout
-        style="@style/frame_layouts_for_colors"
-        android:layout_below="@+id/tv_for_complementary_color"
         android:id="@+id/complementaryColor"
-        />
+        style="@style/frame_layouts_for_colors"
+        android:layout_below="@+id/tv_for_complementary_color" />
 
     <TextView
         android:text="@string/analogous_colors"
@@ -112,6 +111,43 @@
         android:layout_below="@+id/tv_for_triadic_color"
         android:id="@+id/center_triadic"
         />
+
+    <TextView
+        android:text="@string/tetradic_colors"
+        style="@style/text_view_in_color_helper"
+        android:layout_below="@+id/center_triadic"
+        android:id="@+id/tv_for_tetradic_color"
+        />
+
+
+    <FrameLayout
+        style="@style/frame_layouts_tetradic"
+        android:layout_below="@id/tv_for_tetradic_color"
+        android:layout_marginStart="30dp"
+        android:id="@+id/left_left_tetradic"
+        />
+    <FrameLayout
+        style="@style/frame_layouts_tetradic"
+        android:layout_below="@id/tv_for_tetradic_color"
+        android:layout_toEndOf="@+id/left_left_tetradic"
+        android:layout_marginStart="10dp"
+        android:id="@+id/left_center_tetradic"
+        />
+    <FrameLayout
+        style="@style/frame_layouts_tetradic"
+        android:layout_below="@id/tv_for_tetradic_color"
+        android:layout_toEndOf="@+id/left_center_tetradic"
+        android:layout_marginStart="10dp"
+        android:id="@+id/right_center_tetradic"
+        />
+    <FrameLayout
+        style="@style/frame_layouts_tetradic"
+        android:layout_below="@id/tv_for_tetradic_color"
+        android:layout_toEndOf="@+id/right_center_tetradic"
+        android:layout_marginStart="10dp"
+        android:id="@+id/right_right_tetradic"
+        />
+
 
     <LinearLayout
         android:layout_width="match_parent"

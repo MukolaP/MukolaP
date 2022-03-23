@@ -29,7 +29,11 @@ public class CHRelatedFragment extends Fragment implements View.OnClickListener 
                 rightSplitComplementary,
                 leftTriadic,
                 centerTriadic,
-                rightTriadic;
+                rightTriadic,
+                leftTetradic,
+                mainTetradic,
+                rightTetradic,
+                compTetradic;
 
 
     @Override
@@ -50,7 +54,12 @@ public class CHRelatedFragment extends Fragment implements View.OnClickListener 
 
         leftTriadic = view.findViewById(R.id.left_triadic);
         centerTriadic = view.findViewById(R.id.center_triadic);
-        rightTriadic= view.findViewById(R.id.right_triadic);
+        rightTriadic = view.findViewById(R.id.right_triadic);
+
+        leftTetradic = view.findViewById(R.id.left_left_tetradic);
+        mainTetradic = view.findViewById(R.id.left_center_tetradic);
+        rightTetradic = view.findViewById(R.id.right_center_tetradic);
+        compTetradic = view.findViewById(R.id.right_right_tetradic);
 
         FloatingActionButton floatingActionButton = view.findViewById(R.id.fab);
 
@@ -64,22 +73,38 @@ public class CHRelatedFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onResume() {
         super.onResume();
-
+        change();
+        setMainColor(complementaryColor, 180f, "left");
+        setMainColor(leftAnalogousColor, 30f, "left");
+        setMainColor(rightAnalogousColor, 30f, "right");
+        setMainColor(leftSplitComplementary, 150f, "left");
+        setMainColor(rightSplitComplementary, 150f, "right");
+        setMainColor(rightTriadic, 120f, "right");
+        setMainColor(leftTriadic, 120f, "left");
+        setMainColor(leftTetradic, 60f, "left");
+        setMainColor(rightTetradic, 120f, "right");
+        setMainColor(compTetradic, 180f, "right");
+    }
+    void change(){
         choosenColor.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
-        complementaryColor.setBackgroundColor(Color.parseColor(ColorController.complementaryColor(
-                ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+        complementaryColor.setBackgroundColor(Color.parseColor(ColorController.leftRotated(180f)));
 
-        leftAnalogousColor.setBackgroundColor(Color.parseColor(ColorController.leftAnalogousColor(
-                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
-        rightAnalogousColor.setBackgroundColor(Color.parseColor(ColorController.rightAnalogousColor(
-                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+        leftAnalogousColor.setBackgroundColor(Color.parseColor(ColorController.leftRotated(30f)));
+        rightAnalogousColor.setBackgroundColor(Color.parseColor(ColorController.rightRotated(30f)));
         centerAnalogousColor.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
 
-        leftSplitComplementary.setBackgroundColor(Color.parseColor(ColorController.leftSplitComplementary(
-                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
-        rightSplitComplementary.setBackgroundColor(Color.parseColor(ColorController.rightSplitComplementary(
-                ColorValue.hsv, ColorValue.red(), ColorValue.green(), ColorValue.blue())));
+        leftSplitComplementary.setBackgroundColor(Color.parseColor(ColorController.leftRotated(150f)));
+        rightSplitComplementary.setBackgroundColor(Color.parseColor(ColorController.rightRotated(150f)));
         centerSplitComplementary.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
+
+        rightTriadic.setBackgroundColor(Color.parseColor(ColorController.rightRotated(120f)));
+        leftTriadic.setBackgroundColor(Color.parseColor(ColorController.leftRotated(120f)));
+        centerTriadic.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
+
+        leftTetradic.setBackgroundColor(Color.parseColor(ColorController.leftRotated(60f)));
+        mainTetradic.setBackgroundColor(Color.parseColor(ColorValue.getColor()));
+        rightTetradic.setBackgroundColor(Color.parseColor(ColorController.rightRotated(120f)));
+        compTetradic.setBackgroundColor(Color.parseColor(ColorController.rightRotated(180f)));
 
     }
 
@@ -98,5 +123,20 @@ public class CHRelatedFragment extends Fragment implements View.OnClickListener 
             transaction.replace(R.id.MainActivity, AddColorFragment.class, null);
             transaction.commit();
         }
+    }
+
+    public void setMainColor(FrameLayout frameLayout, float rotation, String direction){
+        frameLayout.setOnClickListener(view -> {
+            switch (direction){
+                case "left":
+                    ColorValue.setColor(ColorController.leftRotated(rotation));
+                    change();
+                    break;
+                case "right":
+                    ColorValue.setColor(ColorController.rightRotated(rotation));
+                    change();
+                    break;
+            }
+        });
     }
 }
