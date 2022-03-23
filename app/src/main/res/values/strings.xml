@@ -42,5 +42,8 @@
     <string name="triadic_colors">triadic colors</string>
     <string name="tetradic_colors">tetradic colors</string>
     <string name="s">S</string>
+    <string name="log">log</string>
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
 
 </resources>

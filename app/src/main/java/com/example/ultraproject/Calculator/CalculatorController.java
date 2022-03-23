@@ -3,14 +3,17 @@ package com.example.ultraproject.Calculator;
 import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 
-public final class CalculatorController extends CalculatorModel{
+public final class CalculatorController extends CalculatorModel {
 
+    @SuppressLint("DefaultLocale")
     @NonNull
-    public final String solution (){
+    public final String solution() {
         switch (action) {
             case ("\\+"):
                 resultToEqual();
@@ -25,7 +28,7 @@ public final class CalculatorController extends CalculatorModel{
                 resultToEqual();
                 return " = " + value % value1;
             case ("-"):
-                if (!string.substring(0,1).equals(action)){
+                if (!string.substring(0, 1).equals(action)) {
                     resultToEqual();
                     return " = " + (value - value1);
                 } else {
@@ -34,14 +37,19 @@ public final class CalculatorController extends CalculatorModel{
 
                     string = "";
                     action = "";
-
-                    return " = " + (- Integer.parseInt(paradigm[0]) - Integer.parseInt(paradigm[1]));
+                    return " = " + (-Integer.parseInt(paradigm[0]) - Integer.parseInt(paradigm[1]));
                 }
+            case ("sin"):
+                string = string.substring(4);
+                return ") = " + String.format("%.2f", Math.sin(Integer.parseInt(string)));
+            case ("cos"):
+                string = string.substring(4);
+                return ") = " + String.format("%.2f", Math.cos(Integer.parseInt(string)));
         }
         return "";
     }
 
-    public final void resultToEqual () {
+    public final void resultToEqual() {
         String[] paradigm = string.split(action, 2);
 
         value = Integer.parseInt(paradigm[0]);
@@ -50,8 +58,9 @@ public final class CalculatorController extends CalculatorModel{
         action = "";
     }
 
-    public final String getDeleteOneString(){
-        return string = string.substring(0, string.length() - 1); }
+    public final String getDeleteOneString() {
+        return string = string.substring(0, string.length() - 1);
+    }
 
     public final boolean stringEqualAction() {
         if (stringNull()) {
@@ -62,11 +71,17 @@ public final class CalculatorController extends CalculatorModel{
         return true;
     }
 
-    public final boolean zeroException(){ return !string.endsWith("/"); }
+    public final boolean zeroException() {
+        return !string.endsWith("/");
+    }
 
-    public final boolean stringNull(){ return string.length() != 0; }
+    public final boolean stringNull() {
+        return string.length() != 0;
+    }
 
-    public void EditView(@NonNull TextView text){ text.setText(string); }
+    public void EditView(@NonNull TextView text) {
+        text.setText(string);
+    }
 
     @SuppressLint("SetTextI18n")
     public void numPressed(@NonNull Button button, String number, TextView text) {
@@ -91,7 +106,7 @@ public final class CalculatorController extends CalculatorModel{
     }
 
     @SuppressLint("SetTextI18n")
-    public void minus(@NonNull Button button, TextView text){
+    public void minus(@NonNull Button button, TextView text) {
         button.setOnClickListener(view18 -> {
             if (stringEqualAction()) {
                 string += "-";
@@ -102,28 +117,39 @@ public final class CalculatorController extends CalculatorModel{
     }
 
     @SuppressLint("SetTextI18n")
-    public void equal(@NonNull Button button, TextView text, ScrollView scrollView){
+    public void sin(@NonNull Button button, TextView text, String string, String action){
+        button.setOnClickListener(view1 -> {
+            this.string = string;
+            this.action = action;
+            EditView(text);
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void equal(@NonNull Button button, TextView text, TextView history, ScrollView scrollView) {
         button.setOnClickListener(view14 -> {
             if (!string.equals("") & !action.equals("") & stringEqualAction()) {
                 text.setText(text.getText() + solution());
+
+                addTextView(text, history);
                 scrollView.fullScroll(View.FOCUS_DOWN);
                 equal = true;
             }
         });
     }
 
-    public void deleteOne(@NonNull Button button, TextView text){
+    public void deleteOne(@NonNull ImageButton button, TextView text) {
         button.setOnClickListener(view15 -> {
             if (!equal & stringNull()) {
                 text.setText(getDeleteOneString());
-            } else if (equal) {
+            } else if (equal & action.length() == 0) {
                 text.setText("");
                 equal = false;
             }
         });
     }
 
-    public void deleteAll(@NonNull Button button, TextView text){
+    public void deleteAll(@NonNull Button button, TextView text) {
         button.setOnClickListener(view16 -> {
             string = "";
             EditView(text);
@@ -131,12 +157,17 @@ public final class CalculatorController extends CalculatorModel{
     }
 
     @SuppressLint("SetTextI18n")
-    public void zero(@NonNull Button button, TextView text){
+    public void zero(@NonNull Button button, TextView text) {
         button.setOnClickListener(view1 -> {
             if (stringNull() & zeroException()) {
                 string += "0";
                 EditView(text);
             }
         });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void addTextView(@NonNull TextView text, @NonNull TextView history) {
+        history.setText(history.getText() + text.getText().toString() + "\n");
     }
 }
