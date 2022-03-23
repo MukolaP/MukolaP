@@ -41,5 +41,8 @@
     <string name="split_complementary_colors">split complementary colors</string>
     <string name="triadic_colors">triadic colors</string>
     <string name="s">S</string>
+    <string name="log">log</string>
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
 
 </resources>

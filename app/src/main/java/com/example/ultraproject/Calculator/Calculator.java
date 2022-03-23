@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -33,7 +34,9 @@ public final class Calculator extends Fragment {
         Button back_to_main = view.findViewById(R.id.back_calculator);
         navigation(back_to_main);
 
-        TextView text = view.findViewById(R.id.result);
+        TextView paradigm = view.findViewById(R.id.paradigm);
+        TextView history = view.findViewById(R.id.history);
+
         ScrollView scrollView = view.findViewById(R.id.SCROLLER_ID);
 
         Button zero = view.findViewById(R.id.number_zero);
@@ -52,37 +55,42 @@ public final class Calculator extends Fragment {
         Button multiplication = view.findViewById(R.id.action_multiplication);
         Button division = view.findViewById(R.id.action_division);
         Button perCent = view.findViewById(R.id.action_per_cent);
+        Button sin = view.findViewById(R.id.action_sin);
+        Button cos = view.findViewById(R.id.action_cos);
 
         Button equal = view.findViewById(R.id.equal);
 
-        Button deleteOne = view.findViewById(R.id.delete_one);
+        ImageButton deleteOne = view.findViewById(R.id.delete_one);
         Button deleteAll = view.findViewById(R.id.delete_all);
 
-        text.setMovementMethod(new ScrollingMovementMethod());
+        paradigm.setMovementMethod(new ScrollingMovementMethod());
 
-        Controller.zero(zero, text);
+        Controller.zero(zero, paradigm);
 
-        Controller.numPressed(one, "1", text);
-        Controller.numPressed(two, "2", text);
-        Controller.numPressed(three, "3", text);
-        Controller.numPressed(four, "4", text);
-        Controller.numPressed(five, "5", text);
-        Controller.numPressed(six, "6", text);
-        Controller.numPressed(seven, "7", text);
-        Controller.numPressed(eight, "8", text);
-        Controller.numPressed(nine, "9", text);
+        Controller.numPressed(one, "1", paradigm);
+        Controller.numPressed(two, "2", paradigm);
+        Controller.numPressed(three, "3", paradigm);
+        Controller.numPressed(four, "4", paradigm);
+        Controller.numPressed(five, "5", paradigm);
+        Controller.numPressed(six, "6", paradigm);
+        Controller.numPressed(seven, "7", paradigm);
+        Controller.numPressed(eight, "8", paradigm);
+        Controller.numPressed(nine, "9", paradigm);
 
-        Controller.actionPressed(plus, "+", text);
-        Controller.actionPressed(multiplication, "*", text);
-        Controller.actionPressed(division, "/", text);
-        Controller.actionPressed(perCent, "%", text);
+        Controller.actionPressed(plus, "+", paradigm);
+        Controller.actionPressed(multiplication, "*", paradigm);
+        Controller.actionPressed(division, "/", paradigm);
+        Controller.actionPressed(perCent, "%", paradigm);
 
-        Controller.minus(minus, text);
+        Controller.minus(minus, paradigm);
 
-        Controller.equal(equal, text, scrollView);
+        Controller.sin(sin, paradigm, "sin(", "sin");
+        Controller.sin(cos, paradigm, "cos(", "cos");
 
-        Controller.deleteOne(deleteOne, text);
-        Controller.deleteAll(deleteAll, text);
+        Controller.equal(equal, paradigm, history,scrollView);
+
+        Controller.deleteOne(deleteOne, paradigm);
+        Controller.deleteAll(deleteAll, paradigm);
 
         return view;
     }
