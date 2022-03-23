@@ -5,11 +5,20 @@ public final class CalculatorController extends CalculatorModel{
     public final String solution (){
         switch (action) {
             case ("\\+"):
-                resultToEqual(action, string);
+                resultToEqual();
                 return " = " + (value + value1);
+            case ("\\*"):
+                resultToEqual();
+                return " = " + value * value1;
+            case ("/"):
+                resultToEqual();
+                return " = " + value / value1;
+            case ("%"):
+                resultToEqual();
+                return " = " + value % value1;
             case ("-"):
                 if (!string.substring(0,1).equals(action)){
-                    resultToEqual(action, string);
+                    resultToEqual();
                     return " = " + (value - value1);
                 } else {
                     string = string.substring(1);
@@ -19,42 +28,31 @@ public final class CalculatorController extends CalculatorModel{
                     action = "";
 
                     return " = " + (- Integer.parseInt(paradigm[0]) - Integer.parseInt(paradigm[1]));
-            }
-            case ("\\*"):
-                resultToEqual(action, string);
-                return " = " + value * value1;
-            case ("/"):
-                resultToEqual(action, string);
-                return " = " + value / value1;
-            case ("%"):
-                resultToEqual(action, string);
-                return " = " + value % value1;
+                }
         }
         return "";
     }
 
-    public final void resultToEqual (String action, String string) {
+    public final void resultToEqual () {
         String[] paradigm = string.split(action, 2);
 
         value = Integer.parseInt(paradigm[0]);
         value1 = Integer.parseInt(paradigm[1]);
-        this.string = "";
-        this.action = "";
+        string = "";
+        action = "";
     }
 
     public final String getDeleteOneString(){
-        return string = getString().substring(0, getString().length() - 1); }
+        return string = string.substring(0, string.length() - 1); }
 
     public final boolean StringEqualAction() {
-        if (getString().length() != 0) {
+        if (string.length() != 0) {
             String action = getAction().replace("\\+", "+");
             action = action.replace("\\*", "*");
-            return !getString().substring(getString().length() - 1).equals(action);
+            return !string.substring(string.length() - 1).equals(action);
         }
         return true;
     }
 
-    public final boolean ZeroException(){
-        return !getString().endsWith("/");
-    }
+    public final boolean ZeroException(){ return !string.endsWith("/"); }
 }

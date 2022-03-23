@@ -30,10 +30,15 @@
     <string name="EditText_write">Write this</string>
     <string name="Theme_notes">Тема</string>
     <string name="Body_notes">Основна частина</string>
-    <string name="add">Add</string>
+    <string name="add">add</string>
 
     <string name="refresh">refresh</string>
     <string name="themes">Тема -</string>
     <string name="name">Название</string>
+    <string name="main_color">main color</string>
+    <string name="complementary_color">complementary color</string>
+    <string name="analogous_colors">analogous colors</string>
+    <string name="split_complementary_colors">split complementary colors</string>
+    <string name="triadic_colors">triadic colors</string>
 
 </resources>

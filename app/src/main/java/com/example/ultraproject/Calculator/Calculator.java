@@ -55,7 +55,7 @@ public final class Calculator extends Fragment {
         Button division = view.findViewById(R.id.action_division);
         Button perCent = view.findViewById(R.id.action_per_cent);
 
-        Button ButtonEqual = view.findViewById(R.id.equal);
+        Button Equal = view.findViewById(R.id.equal);
 
         Button deleteOne = view.findViewById(R.id.delete_one);
         Button deleteAll = view.findViewById(R.id.delete_all);
@@ -82,7 +82,7 @@ public final class Calculator extends Fragment {
         ButtonActionPressed(division, "/");
         ButtonActionPressed(perCent, "%");
 
-        equal(ButtonEqual);
+        equal(Equal);
 
         deleteOne(deleteOne);
         deleteAll(deleteAll);

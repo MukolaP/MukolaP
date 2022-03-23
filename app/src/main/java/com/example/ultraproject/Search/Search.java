@@ -52,7 +52,6 @@ public class Search extends Fragment {
     }
 
     public final void initList(Context context, ListView listView, ArrayList<String> listItems) {
-
         adapter_search = new ArrayAdapter<>(context,
                 R.layout.list_item_main, R.id.text_item_main, listItems);
         listView.setAdapter(adapter_search);

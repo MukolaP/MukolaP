@@ -13,7 +13,7 @@
         style="@style/backMain_button"/>
 
     <TextView
-        android:text="main color"
+        android:text="@string/main_color"
         style="@style/text_view_in_color_helper"
         android:layout_below="@+id/back_colorHelper"
         android:id="@+id/tv_for_main_color"
@@ -26,7 +26,7 @@
         />
 
     <TextView
-        android:text="complementary color"
+        android:text="@string/complementary_color"
         style="@style/text_view_in_color_helper"
         android:layout_below="@+id/main_color"
         android:id="@+id/tv_for_complementary_color"
@@ -39,7 +39,7 @@
         />
 
     <TextView
-        android:text="analogous colors"
+        android:text="@string/analogous_colors"
         style="@style/text_view_in_color_helper"
         android:layout_below="@+id/complementaryColor"
         android:id="@+id/tv_for_analogous_color"
@@ -64,7 +64,7 @@
         />
 
     <TextView
-        android:text="split complementary colors"
+        android:text="@string/split_complementary_colors"
         style="@style/text_view_in_color_helper"
         android:layout_below="@+id/center_analogous_color"
         android:id="@+id/tv_for_split_complementary"
@@ -89,7 +89,7 @@
         />
 
     <TextView
-        android:text="triadic colors"
+        android:text="@string/triadic_colors"
         style="@style/text_view_in_color_helper"
         android:layout_below="@+id/center_split_complementary"
         android:id="@+id/tv_for_triadic_color"
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="right"
-        >
+        tools:ignore="RtlHardcoded">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
