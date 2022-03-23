@@ -24,17 +24,20 @@
         android:id="@+id/back_notes"
         style="@style/backMain_button"
         />
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bt_newNotes"
         android:layout_width="58sp"
         android:layout_height="58sp"
         android:layout_marginStart="160sp"
         android:layout_marginBottom="10sp"
+        android:layout_marginEnd="10sp"
         android:layout_alignParentBottom = "true"
         android:layout_alignParentEnd = "true"
         android:text="@string/Button_plus"
         android:textSize="18sp"
-        />
+        android:src="@drawable/ic_add"
+        android:contentDescription="@string/EditText_search" />
+
     <ListView
         android:id="@+id/listview_notes"
         android:layout_width="fill_parent"
@@ -42,8 +45,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="125dp"
-        android:layout_marginBottom="475dp"
-        />
+        android:layout_marginBottom="475dp" />
+
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/list_themes"

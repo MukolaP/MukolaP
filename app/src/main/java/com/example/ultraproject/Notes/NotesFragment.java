@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
 import com.example.ultraproject.Search.Search;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class NotesFragment extends Fragment {
 
@@ -28,10 +29,10 @@ public class NotesFragment extends Fragment {
         @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_notes, null);
 
         Button back_to_main = view.findViewById(R.id.back_notes);
-        navigation(back_to_main, 0);
+        back_to_main.setOnClickListener(view1 -> navigation(0));
 
-        Button bt_newNotes = view.findViewById(R.id.bt_newNotes);
-        navigation(bt_newNotes, 1);
+        FloatingActionButton bt_newNotes = view.findViewById(R.id.bt_newNotes);
+        bt_newNotes.setOnClickListener(view1 -> navigation(1));
 
         ListView listView = view.findViewById(R.id.listview_notes);
         EditText editText_search = view.findViewById(R.id.text_search_notes);
@@ -48,25 +49,24 @@ public class NotesFragment extends Fragment {
     }
 
     @SuppressLint("NonConstantResourceId")
-    private void navigation(Button button, int pos) {
-        button.setOnClickListener(view -> {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-            switch (pos) {
-                case (0):
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
-                    transaction.commit();
-                    break;
-                case (1):
-                    transaction.setReorderingAllowed(true);
-                    transaction.replace(R.id.MainActivity, WriteNotesFragment.class, null);
-                    transaction.commit();
-                    break;
-            }
-        });
+    private void navigation(int pos) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+        switch (pos) {
+            case (0):
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.MainActivity, NavigationFragment.class, null);
+                transaction.commit();
+                break;
+            case (1):
+                transaction.setReorderingAllowed(true);
+                transaction.replace(R.id.MainActivity, WriteNotesFragment.class, null);
+                transaction.commit();
+                break;
+        }
     }
+
 
     private void transaction(int pos) {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();

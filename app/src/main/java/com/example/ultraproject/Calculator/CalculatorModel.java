@@ -13,8 +13,4 @@ public class CalculatorModel {
     public final String getAction() {
         return action;
     }
-
-    public final void setAction(String action) {
-        this.action = action;
-    }
 }

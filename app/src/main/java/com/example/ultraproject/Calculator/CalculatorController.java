@@ -117,7 +117,7 @@ public final class CalculatorController extends CalculatorModel {
     }
 
     @SuppressLint("SetTextI18n")
-    public void sin(Button button, TextView text, String string, String action){
+    public void sin(@NonNull Button button, TextView text, String string, String action){
         button.setOnClickListener(view1 -> {
             this.string = string;
             this.action = action;
@@ -167,7 +167,7 @@ public final class CalculatorController extends CalculatorModel {
     }
 
     @SuppressLint("SetTextI18n")
-    public void addTextView(TextView text, TextView history) {
+    public void addTextView(@NonNull TextView text, @NonNull TextView history) {
         history.setText(history.getText() + text.getText().toString() + "\n");
     }
 }
