@@ -3,8 +3,9 @@ package com.example.ultraproject.Calculator;
 public class CalculatorModel {
 
     protected String string = "", action = "";
-    protected int value, value1;
+    protected float value, value1;
     protected boolean equal = false;
+    protected boolean minus = false;
 
     public final String getString() { return string; }
 

@@ -65,6 +65,7 @@ public final class Calculator extends Fragment {
         Button cos = view.findViewById(R.id.action_cos);
 
         Button equal = view.findViewById(R.id.equal);
+        Button coma = view.findViewById(R.id.coma);
 
         ImageButton deleteOne = view.findViewById(R.id.delete_one);
         Button deleteAll = view.findViewById(R.id.delete_all);
@@ -94,6 +95,7 @@ public final class Calculator extends Fragment {
         Controller.sin(cos, paradigm, "cos(", "cos");
 
         Controller.equal(equal, paradigm, history,scrollView);
+        Controller.coma(coma, paradigm, ",");
 
         Controller.deleteOne(deleteOne, paradigm);
         Controller.deleteAll(deleteAll, paradigm);

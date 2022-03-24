@@ -186,9 +186,9 @@
     <Button
         android:id="@+id/action_cos"
         style="@style/action_button"
-        android:layout_width="75dp"
+        android:layout_width="73dp"
         android:layout_alignParentBottom = "true"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="338dp"
         android:layout_marginTop="625dp"
         android:text="@string/cos" />
 
@@ -213,6 +213,15 @@
         android:textColor = "@color/white"
         android:backgroundTint = "@color/orange"
         android:text="@string/Button_equal" />
+
+    <Button
+        android:id="@+id/coma"
+        style="@style/calc_button"
+        android:layout_width="60dp"
+        android:layout_alignParentBottom = "true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="625dp"
+        android:text="@string/coma" />
 
     <TextView
         android:id="@+id/paradigm"
