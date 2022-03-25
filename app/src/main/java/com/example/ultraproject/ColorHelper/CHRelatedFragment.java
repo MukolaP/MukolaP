@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.graphics.Color;
 
 import com.example.ultraproject.NavigationFragment;
@@ -18,10 +19,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class CHRelatedFragment extends Fragment implements View.OnClickListener {
-
-    private class aboba{
-
-    }
 
     FrameLayout choosenColor,
                 complementaryColor,
@@ -43,7 +40,8 @@ public class CHRelatedFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_color_helper, null);
+        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.fragment_color_helper, container, false);
+
 
         choosenColor = view.findViewById(R.id.main_color);
         complementaryColor = view.findViewById(R.id.complementaryColor);
