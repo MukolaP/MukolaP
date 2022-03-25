@@ -14,6 +14,8 @@ public final class CalculatorController extends CalculatorModel {
     @SuppressLint("DefaultLocale")
     @NonNull
     public final String solution() {
+        string = string.replace(",", ".");
+        minusNumber();
         switch (action) {
             case ("\\+"):
                 resultToEqual();
@@ -28,23 +30,21 @@ public final class CalculatorController extends CalculatorModel {
                 resultToEqual();
                 return " = " + value % value1;
             case ("-"):
-                if (!string.substring(0, 1).equals(action)) {
-                    resultToEqual();
-                    return " = " + (value - value1);
-                } else {
-                    string = string.substring(1);
-                    String[] paradigm = string.split("-", 2);
-
-                    string = "";
-                    action = "";
-                    return " = " + (-Integer.parseInt(paradigm[0]) - Integer.parseInt(paradigm[1]));
-                }
+                resultToEqual();
+                return " = " + (value - value1);
+            case ("--"):
+                string = string.substring(1);
+                String[] paradigm = string.split("-", 2);
+                zeroing();
+                return " = " + (-Float.parseFloat(paradigm[0]) - Float.parseFloat(paradigm[1]));
             case ("sin"):
-                string = string.substring(4);
-                return ") = " + String.format("%.2f", Math.sin(Integer.parseInt(string)));
+                String paradigmSin = string.substring(4);
+                zeroing();
+                return ") = " + String.format("%.2f", Math.sin(Float.parseFloat(paradigmSin)));
             case ("cos"):
-                string = string.substring(4);
-                return ") = " + String.format("%.2f", Math.cos(Integer.parseInt(string)));
+                String paradigmCos = string.substring(4);
+                zeroing();
+                return ") = " + String.format("%.2f", Math.cos(Float.parseFloat(paradigmCos)));
         }
         return "";
     }
@@ -52,10 +52,9 @@ public final class CalculatorController extends CalculatorModel {
     public final void resultToEqual() {
         String[] paradigm = string.split(action, 2);
 
-        value = Integer.parseInt(paradigm[0]);
-        value1 = Integer.parseInt(paradigm[1]);
-        string = "";
-        action = "";
+        value = Float.parseFloat(paradigm[0]);
+        value1 = Float.parseFloat(paradigm[1]);
+        zeroing();
     }
 
     public final String getDeleteOneString() {
@@ -81,6 +80,17 @@ public final class CalculatorController extends CalculatorModel {
 
     public void EditView(@NonNull TextView text) {
         text.setText(string);
+    }
+
+    public void zeroing(){
+        string = "";
+        action = "";
+    }
+
+    public void minusNumber(){
+        if (string.substring(0, 1).equals(action)) {
+            action = action.replace("-", "--");
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -134,6 +144,15 @@ public final class CalculatorController extends CalculatorModel {
                 addTextView(text, history);
                 scrollView.fullScroll(View.FOCUS_DOWN);
                 equal = true;
+            }
+        });
+    }
+
+    public void coma(Button button, TextView text, String string){
+        button.setOnClickListener(view -> {
+            if (stringNull()) {
+                this.string += string;
+                EditView(text);
             }
         });
     }

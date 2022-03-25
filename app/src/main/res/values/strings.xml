@@ -47,5 +47,6 @@
     <string name="cos">cos</string>
     <string name="relative_colors">Relative colors</string>
     <string name="color_info">Color info</string>
+    <string name="coma">,</string>
 
 </resources>

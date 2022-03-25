@@ -3,15 +3,12 @@ package com.example.ultraproject.Calculator;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.ultraproject.NavigationFragment;
 import com.example.ultraproject.R;
@@ -68,6 +65,7 @@ public final class Calculator extends Fragment {
         Button cos = view.findViewById(R.id.action_cos);
 
         Button equal = view.findViewById(R.id.equal);
+        Button coma = view.findViewById(R.id.coma);
 
         ImageButton deleteOne = view.findViewById(R.id.delete_one);
         Button deleteAll = view.findViewById(R.id.delete_all);
@@ -97,11 +95,12 @@ public final class Calculator extends Fragment {
         Controller.sin(cos, paradigm, "cos(", "cos");
 
         Controller.equal(equal, paradigm, history,scrollView);
+        Controller.coma(coma, paradigm, ",");
 
         Controller.deleteOne(deleteOne, paradigm);
         Controller.deleteAll(deleteAll, paradigm);
 
-        loadText(getContext(), history);
+        loadText(history);
 
         return view;
     }
@@ -109,7 +108,7 @@ public final class Calculator extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        saveText(getContext(), history);
+        saveText(history);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -124,19 +123,17 @@ public final class Calculator extends Fragment {
         });
     }
 
-    public void saveText(Context context, @NonNull TextView history) {
+    public void saveText(@NonNull TextView history) {
         sPref = requireActivity().getSharedPreferences("UltraProject", MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(SAVED_TEXT, history.getText().toString());
         ed.apply();
-        Toast.makeText(context, "Text saved", Toast.LENGTH_SHORT).show();
     }
 
-    public void loadText(Context context, @NonNull TextView history) {
+    public void loadText(@NonNull TextView history) {
         sPref = requireActivity().getSharedPreferences("UltraProject", MODE_PRIVATE);
         String savedText = sPref.getString(SAVED_TEXT, "");
         history.setText(savedText);
-        Toast.makeText(context, "Text loaded", Toast.LENGTH_SHORT).show();
     }
 }
 
