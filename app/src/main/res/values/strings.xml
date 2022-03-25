@@ -45,5 +45,7 @@
     <string name="log">log</string>
     <string name="sin">sin</string>
     <string name="cos">cos</string>
+    <string name="relative_colors">Relative colors</string>
+    <string name="color_info">Color info</string>
 
 </resources>

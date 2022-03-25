@@ -19,6 +19,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CHRelatedFragment extends Fragment implements View.OnClickListener {
 
+    private class aboba{
+
+    }
+
     FrameLayout choosenColor,
                 complementaryColor,
                 leftAnalogousColor,

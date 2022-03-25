@@ -1,6 +1,7 @@
 package com.example.ultraproject;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ultraproject.Calculator.Calculator;
 import com.example.ultraproject.ColorHelper.CHRelatedFragment;
+import com.example.ultraproject.ColorHelper.ColorHelperActivity;
 import com.example.ultraproject.Notes.NotesFragment;
 import com.example.ultraproject.Search.Search;
 
@@ -47,6 +49,7 @@ public class NavigationFragment extends Fragment {
 
         search.Search(getContext(), listView, editText_search, listItems);
 
+
         listView.setOnItemClickListener((parent, view1, position, id) -> navigation(position));
 
         return view;
@@ -63,9 +66,8 @@ public class NavigationFragment extends Fragment {
                 transaction.commit();
                 break;
             case 1:
-                transaction.setReorderingAllowed(true);
-                transaction.replace(R.id.MainActivity, CHRelatedFragment.class, null);
-                transaction.commit();
+                Intent intent = new Intent(this.getContext(), ColorHelperActivity.class);
+                startActivity(intent);
                 break;
             case 2:
                 transaction.setReorderingAllowed(true);

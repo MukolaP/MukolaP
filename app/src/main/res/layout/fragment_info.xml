@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ColorHelper.InfoFragment">
+
+    <Button
+        android:id="@+id/back_info"
+        style="@style/backMain_button"/>
+
+    <TextView
+        style="@style/text_view_in_color_helper"
+        android:layout_below="@id/back_info"
+        android:id="@+id/chosen_color"
+        />
+
+    <FrameLayout
+        style="@style/frame_layouts_for_colors"
+        android:layout_below="@id/chosen_color"
+
+        />
+
+</RelativeLayout>
