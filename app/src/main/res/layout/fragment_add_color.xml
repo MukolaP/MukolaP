@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ColorHelper.AddColorFragment">
+    tools:context=".ColorHelper.AddColorFragment"
+    android:background="#1f1f1f">
 
     <Button
         android:id="@+id/back_to_related"

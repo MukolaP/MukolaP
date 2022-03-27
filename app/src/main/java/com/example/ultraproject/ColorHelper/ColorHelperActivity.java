@@ -12,14 +12,13 @@ import com.example.ultraproject.R;
 public class ColorHelperActivity extends FragmentActivity {
 
     private static final int numberOfPages = 2;
-    private ViewPager2 viewPager2;
     FragmentStateAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_helper);
-        viewPager2 = findViewById(R.id.viewpager);
+        ViewPager2 viewPager2 = findViewById(R.id.viewpager);
         pagerAdapter = new ScreenSlidePagerAdapter(this);
         viewPager2.setAdapter(pagerAdapter);
 
@@ -27,7 +26,7 @@ public class ColorHelperActivity extends FragmentActivity {
 
     }
 
-    private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
+    private static class ScreenSlidePagerAdapter extends FragmentStateAdapter {
         public ScreenSlidePagerAdapter(FragmentActivity fa) {
             super(fa);
         }

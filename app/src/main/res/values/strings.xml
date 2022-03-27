@@ -35,7 +35,7 @@
     <string name="refresh">refresh</string>
     <string name="themes">Тема -</string>
     <string name="name">Название</string>
-    <string name="main_color">main color</string>
+    <string name="main_color">chosen color</string>
     <string name="complementary_color">complementary color</string>
     <string name="analogous_colors">analogous colors</string>
     <string name="split_complementary_colors">split complementary colors</string>
@@ -47,5 +47,11 @@
     <string name="cos">cos</string>
     <string name="relative_colors">Relative colors</string>
     <string name="color_info">Color info</string>
+    <string name="rgb">RGB</string>
+    <string name="hsv">HSV</string>
+    <string name="example">example</string>
+    <string name="cmyk">CMYK</string>
+    <string name="binary">Binary</string>
+    <string name="hex">Hex</string>
 
 </resources>

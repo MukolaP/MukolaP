@@ -1,24 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ColorHelper.InfoFragment">
+    tools:context=".ColorHelper.InfoFragment"
+    android:orientation="vertical"
+    android:background="#1f1f1f">
 
     <Button
         android:id="@+id/back_info"
-        style="@style/backMain_button"/>
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:drawableTop="@drawable/ic_left_arrow"
+
+        android:backgroundTint="#1f1f1f"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+
+
+        />
 
     <TextView
-        style="@style/text_view_in_color_helper"
-        android:layout_below="@id/back_info"
         android:id="@+id/chosen_color"
-        />
+        style="@style/text_view_in_color_helper"
+        android:text="@string/main_color"
+        android:layout_marginTop="0dp"/>
 
     <FrameLayout
         style="@style/frame_layouts_for_colors"
-        android:layout_below="@id/chosen_color"
+        android:id="@+id/color"/>
 
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:background="#1c1d1d"
+        >
+        <TextView
+            style="@style/text_info"
+            android:text="@string/hex"
 
-</RelativeLayout>
+            />
+        <TextView
+            android:id="@+id/hex"
+            android:layout_marginStart="20dp"
+            android:layout_width="250dp"
+            style="@style/text_info"
+            android:text="@string/example"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:background="#212225"
+        >
+        <TextView
+            style="@style/text_info"
+            android:text="@string/rgb"
+            />
+        <TextView
+            android:layout_marginStart="20dp"
+            android:text="@string/example"
+            android:layout_width="250dp"
+            style="@style/text_info"
+            android:id="@+id/rgb"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:background="#1c1d1d"
+        >
+        <TextView
+            style="@style/text_info"
+            android:text="@string/hsv"
+
+            />
+        <TextView
+            android:id="@+id/hsv"
+            android:layout_marginStart="20dp"
+            android:layout_width="250dp"
+            style="@style/text_info"
+            android:text="@string/example"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:background="#212225"
+        >
+        <TextView
+            style="@style/text_info"
+            android:text="@string/cmyk"
+            />
+        <TextView
+            android:id="@+id/cmyk"
+            android:layout_marginStart="20dp"
+            android:layout_width="250dp"
+            style="@style/text_info"
+            android:text="@string/example"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:background="#1c1d1d"
+        >
+        <TextView
+            style="@style/text_info"
+            android:text="@string/binary"
+
+            />
+        <TextView
+            android:id="@+id/binary"
+            android:layout_marginStart="20dp"
+            style="@style/text_info"
+            android:layout_width="250dp"
+            android:text="@string/example"
+            />
+    </LinearLayout>
+
+</LinearLayout>
